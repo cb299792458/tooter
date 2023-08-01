@@ -4,16 +4,33 @@ function Home(){
     return(
         <div id="home">
             <div id="left-bar">
-                This is the left bar
+                <div>Small Icon</div>
+                <p>Home</p>
+                <p>Explore</p>
+                <p>Notifications</p>
+                <p>Messages</p>
+                <p>Lists</p>
+                <p>Bookmarks</p>
+                <p>Communities</p>
+                <p>Verified</p>
+                <p>Profile</p>
+                <p>More</p>
+
+                <div>Post</div>
+                <div>Account Switcher</div>
             </div>
             <main>
                 <h2>Home</h2>
                 <div>
-                    <span>All Toots</span><span>Following</span>
+                    <span>All Toots </span><span> Following</span>
                 </div>
             </main>
             <div id="right-bar">
-                This is the right bar
+                <input type="search" placeholder="Search Tooter"></input>
+                <div>Get Verified</div>
+                <div>What's Happening</div>
+                <div>Who to Follow</div>
+                <div>Footer</div>
             </div>
         </div>
     )
