@@ -9,6 +9,7 @@ function Navigation({ isLoaded }){
 
 	return (
 		<ul>
+			This is the Navigation Bar.
 			<li>
 				<NavLink exact to="/">Home</NavLink>
 			</li>

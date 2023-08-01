@@ -5,6 +5,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import Home from "./components/Home";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +25,12 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/">
+            <Redirect to='/home' />
           </Route>
         </Switch>
       )}
