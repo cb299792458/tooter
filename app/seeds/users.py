@@ -31,3 +31,20 @@ def undo_users():
         db.session.execute(text("DELETE FROM users"))
         
     db.session.commit()
+
+def reset_all():
+    db.drop_all()
+    db.create_all()
+    
+    demo = User(
+        username='demosthenes', email='demo@aa.io', password='password')
+    frizz = User(
+        username='the_frizz', email='vfrizzle@walkerville.edu', password='password')
+
+    db.session.add(demo)
+    db.session.add(frizz)
+
+    t1 = Toot(text='this is a toot')
+    db.session.add(t1)
+    
+    db.session.commit()
