@@ -1,5 +1,5 @@
 # Tootr
-Tootr is a social media app designed for matching students with personal tutors. 
+Tootr is a social media app designed for matching students (tootees) with personal tutors (tooters). 
 
 ![tooter icon](https://raw.githubusercontent.com/cb299792458/tooter/main/react-app/public/apple-touch-icon.png)
 
