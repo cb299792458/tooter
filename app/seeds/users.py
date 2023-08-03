@@ -1,4 +1,4 @@
-from app.models import db, User, environment, SCHEMA
+from app.models import db, User, environment, SCHEMA, Toot
 from sqlalchemy.sql import text
 
 
@@ -11,6 +11,10 @@ def seed_users():
 
     db.session.add(demo)
     db.session.add(frizz)
+
+    t1 = Toot(text='this is a toot')
+    db.session.add(t1)
+    
     db.session.commit()
 
 
