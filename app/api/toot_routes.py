@@ -1,22 +1,26 @@
-from flask import Blueprint, jsonify
-from app.models import Toot
+from flask import Blueprint, jsonify, request
+from app.models import db, Toot
 
 toot_routes = Blueprint('toots', __name__)
 
 
 @toot_routes.route('/')
-def toot():
-    """
-    Query for all users and returns them in a list of user dictionaries
-    """
+def toots():
     toots = Toot.query.all()
-    return {'toot': [toot.to_dict() for toot in toots]}
+    return [toot.to_dict() for toot in toots]
+
+@toot_routes.route('/new',methods=['POST'])
+def create_toot():
+    data=request.json
+
+    toot = Toot(text=data['text'])
+    db.session.add(toot)
+    db.session.commit()
+    
+    return jsonify(toot.to_dict())
 
 
-# @user_routes.route('/<int:id>')
-# def user(id):
-#     """
-#     Query for a user by id and returns that user in a dictionary
-#     """
-#     user = User.query.get(id)
-#     return user.to_dict()
+@toot_routes.route('/<int:id>')
+def toot(id):
+    toot = Toot.query.get(id)
+    return toot.to_dict()
