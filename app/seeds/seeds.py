@@ -34,10 +34,10 @@ def undo_users():
 
 
 user_data = [
-    ('demo_user','Demosthenes','demo@aa.io','password',''),
     ('the_frizz','Valerie Frizzle, PhD','vfrizzle@walkerville.edu','password',''),
-    ('wevebeenfrizzled','Timothy "Tim" Wright','tim@walkerville.edu','password',''),
+    ('demo_user','Demosthenes','demo@aa.io','password',''),
     ('shouldvestayedhometoday','Arnold Perlstein','arnold@walkerville.edu','password',''),
+    ('wevebeenfrizzled','Timothy "Tim" Wright','tim@walkerville.edu','password',''),
     ('punderdog','Carlos Ramon','carlos@walkerville.edu','password',''),
     ('atmyoldschool','Phoebe Terese','phoebe@walkerville.edu','password',''),
     ('ohbadohbad','Keesha Franklin','keesha@walkerville.edu','password',''),
@@ -45,7 +45,12 @@ user_data = [
     ('isitjustme','Ralph Alessandro Giuseppe "Ralphie" Tennelli','ralphie@walkerville.edu','password',''),
     ('whatarewegonnado','Wanda Li','wanda@walkerville.edu','password',''),
 ]
-
+toot_data=[
+    (0,None,"""Seatbelts everyone! We\'re going on a field trip today!
+    It\'s time to take chances! Make mistakes! Get messy!
+    @shouldvestayedhometoday @wevebeenfrizzled @punderdog @atmyoldschool @ohbadohbad @accordingtomyresearch @isitjustme @whatarewegonnado"""),
+    (2,0,'I knew I should have stayed home today.')
+]
 
 def reset_all():
     db.drop_all()
@@ -54,14 +59,17 @@ def reset_all():
     users=[]
     for (username,name,email,password,picture) in user_data:
         new_user=User(username=username,name=name,email=email,password=password,picture=picture)
-        db.session.add(new_user)
         users.append(new_user)
 
-    t1 = Toot(text='this is a toot')
-    db.session.add(t1)
+    for user in users[1:]:
+        users[0].followers.append(user)
+
+    toots=[]
+    for (author_idx,parent,text) in toot_data:
+        new_toot=Toot(author=users[author_idx],parent=toots[parent] if parent!=None else None,text=text)
+        toots.append(new_toot)
     
-    for user in users:
-        if user==users[1]: continue
-        users[1].followers.append(user)
+    db.session.add_all(users)
+    db.session.add_all(toots)
 
     db.session.commit()
