@@ -32,19 +32,36 @@ def undo_users():
         
     db.session.commit()
 
+
+user_data = [
+    ('demo_user','Demosthenes','demo@aa.io','password',''),
+    ('the_frizz','Valerie Frizzle, PhD','vfrizzle@walkerville.edu','password',''),
+    ('wevebeenfrizzled','Timothy "Tim" Wright','tim@walkerville.edu','password',''),
+    ('shouldvestayedhometoday','Arnold Perlstein','arnold@walkerville.edu','password',''),
+    ('punderdog','Carlos Ramon','carlos@walkerville.edu','password',''),
+    ('atmyoldschool','Phoebe Terese','phoebe@walkerville.edu','password',''),
+    ('ohbadohbad','Keesha Franklin','keesha@walkerville.edu','password',''),
+    ('accordingtomyresearch','Dorothy Ann "D.A" Hudson','da@walkerville.edu','password',''),
+    ('isitjustme','Ralph Alessandro Giuseppe "Ralphie" Tennelli','ralphie@walkerville.edu','password',''),
+    ('whatarewegonnado','Wanda Li','wanda@walkerville.edu','password',''),
+]
+
+
 def reset_all():
     db.drop_all()
     db.create_all()
-    
-    demo = User(
-        username='demosthenes', email='demo@aa.io', password='password')
-    frizz = User(
-        username='the_frizz', email='vfrizzle@walkerville.edu', password='password')
 
-    db.session.add(demo)
-    db.session.add(frizz)
+    users=[]
+    for (username,name,email,password,picture) in user_data:
+        new_user=User(username=username,name=name,email=email,password=password,picture=picture)
+        db.session.add(new_user)
+        users.append(new_user)
 
     t1 = Toot(text='this is a toot')
     db.session.add(t1)
     
+    for user in users:
+        if user==users[1]: continue
+        users[1].followers.append(user)
+
     db.session.commit()

@@ -11,8 +11,21 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
+    name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    picture = db.Column(db.String(255))
+
+    follows = db.Table('follows',
+        db.Column('follower_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+        db.Column('followee_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    )
+
+    followers = db.relationship('User', secondary='follows',
+                               primaryjoin=(id == db.Table('follows').c.follower_id),
+                               secondaryjoin=(id == db.Table('follows').c.followee_id),
+                               backref=db.backref('followees',lazy='dynamic'))
+
 
     @property
     def password(self):
@@ -29,5 +42,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
+            'name': self.name,
             'email': self.email,
+            'picture': self.picture,
         }
+
