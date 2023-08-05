@@ -1,0 +1,8 @@
+#picture {
+    height: 60px;
+    border-radius: 30px;
+}
+
+#toot {
+    display: flex;
+}

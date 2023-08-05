@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { fetchToots, getToots } from "../../store/toot";
+import Toot from "../Toot";
+
 function Home(){
     const toots = useSelector(getToots);
     const dispatch = useDispatch();
@@ -24,7 +26,7 @@ function Home(){
                 headers: {
                   'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({text: text})
+                body: JSON.stringify({text: text, author_id: sessionUser.id})
             });
     
             if(res.ok){
@@ -66,7 +68,7 @@ function Home(){
                 </form>
                 <div>
                     {toots.map((toot)=>{
-                        return <div key={toot.id}>{toot.text}</div>
+                        return <Toot toot={toot} key={toot.id}/>
                     })}
                 </div>
             </main>

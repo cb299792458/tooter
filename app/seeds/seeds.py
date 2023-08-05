@@ -34,19 +34,19 @@ def undo_users():
 
 
 user_data = [
-    ('the_frizz','Valerie Frizzle, PhD','vfrizzle@walkerville.edu','password',''),
-    ('demo_user','Demosthenes','demo@aa.io','password',''),
-    ('shouldvestayedhometoday','Arnold Perlstein','arnold@walkerville.edu','password',''),
-    ('wevebeenfrizzled','Timothy "Tim" Wright','tim@walkerville.edu','password',''),
-    ('punderdog','Carlos Ramon','carlos@walkerville.edu','password',''),
-    ('atmyoldschool','Phoebe Terese','phoebe@walkerville.edu','password',''),
-    ('ohbadohbad','Keesha Franklin','keesha@walkerville.edu','password',''),
-    ('accordingtomyresearch','Dorothy Ann "D.A" Hudson','da@walkerville.edu','password',''),
-    ('isitjustme','Ralph Alessandro Giuseppe "Ralphie" Tennelli','ralphie@walkerville.edu','password',''),
-    ('whatarewegonnado','Wanda Li','wanda@walkerville.edu','password',''),
+    ('the_frizz','Valerie Frizzle, PhD','vfrizzle@walkerville.edu','password','https://i.imgur.com/Iy1RjQ2.png'),
+    ('demo_user','Demosthenes','demo@aa.io','password','https://i.imgur.com/TF2X50m.png'),
+    ('shouldvestayedhometoday','Arnold Perlstein','arnold@walkerville.edu','password','https://i.imgur.com/r594tQJ.png'),
+    ('wevebeenfrizzled','Timothy "Tim" Wright','tim@walkerville.edu','password','https://i.imgur.com/JO6jL5R.png'),
+    ('punderdog','Carlos Ramon','carlos@walkerville.edu','password','https://i.imgur.com/KnfT5rp.png'),
+    ('atmyoldschool','Phoebe Terese','phoebe@walkerville.edu','password','https://i.imgur.com/AqnHCDo.png'),
+    ('ohbadohbad','Keesha Franklin','keesha@walkerville.edu','password','https://i.imgur.com/c41GFC0.png'),
+    ('accordingtomyresearch','Dorothy Ann "D.A" Hudson','da@walkerville.edu','password','https://i.imgur.com/qPjJccl.png'),
+    ('isitjustme','Ralph Alessandro Giuseppe "Ralphie" Tennelli','ralphie@walkerville.edu','password','https://i.imgur.com/Oa9skL9.png'),
+    ('whatarewegonnado','Wanda Li','wanda@walkerville.edu','password','https://i.imgur.com/u8MPGlJ.png'),
 ]
 toot_data=[
-    (0,None,"""Seatbelts everyone! We\'re going on a field trip today!
+    (0,None,"""Seatbelts everyone! We\'re going on a #FieldTrip today!
     It\'s time to take chances! Make mistakes! Get messy!
     @shouldvestayedhometoday @wevebeenfrizzled @punderdog @atmyoldschool @ohbadohbad @accordingtomyresearch @isitjustme @whatarewegonnado"""),
     (2,0,'I knew I should have stayed home today.')

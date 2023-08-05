@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA
-
+from sqlalchemy import TIMESTAMP
+import datetime
 
 class Toot(db.Model):
     __tablename__ = 'toots'
@@ -16,6 +17,7 @@ class Toot(db.Model):
     children = db.relationship('Toot', backref=db.backref('parent', remote_side=[id]))
 
     text = db.Column(db.String(280), nullable=False)
+    time = db.Column(TIMESTAMP,default=datetime.datetime.utcnow)
 
     def to_dict(self):
         return {
@@ -24,5 +26,6 @@ class Toot(db.Model):
             'author': self.author.to_dict(),
             'text': self.text,
             'parent_id': self.parent_id,
+            'time': self.time,
             # 'parent': self.parent.to_dict(),
         }

@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import db, Toot
+from app.models import db, Toot, User
 
 toot_routes = Blueprint('toots', __name__)
 
@@ -13,7 +13,7 @@ def toots():
 def create_toot():
     data=request.json
 
-    toot = Toot(text=data['text'])
+    toot = Toot(text=data['text'],author_id=data['author_id'])
     db.session.add(toot)
     db.session.commit()
     
