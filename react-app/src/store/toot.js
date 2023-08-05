@@ -2,15 +2,24 @@
 
 const GET_TOOTS = '/api/toots';
 const RECEIVE_TOOT = 'RECEIVE_TOOT';
+const RECEIVE_REPLIES = 'RECEIVE_REPLIES';
 
 export const getToots = ({toots}) => {
-    return Object.values(toots)
+    return Object.values(toots);
 }
 
-export const getVideo = (tootId) => {
+// export const getReplies = ({tootId}) => {
+//     return(
+//         (store) => {
+//             return store.toots[tootId]['replies'];
+//         }
+//     )
+// }
+
+export const getToot = (tootId) => {
     return(
         (store) => {
-            return store.toots[tootId]
+            return store.toots[tootId];
         }
     )
 };
@@ -21,11 +30,16 @@ export const fetchToots = () => async(dispatch) => {
     dispatch({type: GET_TOOTS, toots})
 }
 
-export const fetchVideo = (tootId) => async(dispatch) => {
+export const fetchToot = (tootId) => async(dispatch) => {
     const res = await fetch(`/api/toots/${tootId}`);
     const toot = await res.json();
-
     dispatch( {type: RECEIVE_TOOT, toot} );
+}
+
+export const fetchReplies = (tootId) => async(dispatch) => {
+    let res = await fetch(`/api/toots/${tootId}/replies`);
+    let replies = await res.json();
+    dispatch({type: RECEIVE_REPLIES, replies})
 }
 
 // export const deleteVideo = (videoId) => async(dispatch) => {
@@ -57,6 +71,11 @@ const tootsReducer = (state = {}, action) => {
             return newState; 
         case GET_TOOTS:
             return {...state, ...action.toots};
+        case RECEIVE_REPLIES:
+            for(let reply of action.replies){
+                newState[reply.id] = reply;
+            }
+            return newState
         // case REMOVE_VIDEO:
         //     delete(newState[action.tootId]);
         //     return newState;        

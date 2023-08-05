@@ -27,5 +27,10 @@ class Toot(db.Model):
             'text': self.text,
             'parent_id': self.parent_id,
             'time': self.time,
+            'has_replies': len(self.replies())>0,
             # 'parent': self.parent.to_dict(),
         }
+    
+    def replies(self):
+        if not self.children: return []
+        return [c.to_dict() for c in self.children]

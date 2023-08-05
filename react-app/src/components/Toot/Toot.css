@@ -3,6 +3,6 @@
     border-radius: 30px;
 }
 
-#toot {
+#toot, #toot a {
     display: flex;
 }

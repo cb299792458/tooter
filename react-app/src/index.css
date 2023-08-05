@@ -47,8 +47,20 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+#app {
+	display: flex;
+	flex-direction: row;
+}
+a:link, a:visited {
+	text-decoration: none;
+	color: inherit;
+}
 
 div {
 	border: 1px solid gray;
 	margin: 10px;
+}
+
+div * {
+	font-family: "TwitterChirp", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
