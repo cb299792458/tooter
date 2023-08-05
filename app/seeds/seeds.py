@@ -36,7 +36,7 @@ def undo_users():
 user_data = [
     ('the_frizz','Valerie Frizzle, PhD','vfrizzle@walkerville.edu','password','https://i.imgur.com/Iy1RjQ2.png'),
     ('demo_user','Demosthenes','demo@aa.io','password','https://i.imgur.com/TF2X50m.png'),
-    ('shouldvestayedhometoday','Arnold Perlstein','arnold@walkerville.edu','password','https://i.imgur.com/r594tQJ.png'),
+    ('shouldhavestayedhometoday','Arnold Perlstein','arnold@walkerville.edu','password','https://i.imgur.com/r594tQJ.png'),
     ('wevebeenfrizzled','Timothy "Tim" Wright','tim@walkerville.edu','password','https://i.imgur.com/JO6jL5R.png'),
     ('punderdog','Carlos Ramon','carlos@walkerville.edu','password','https://i.imgur.com/KnfT5rp.png'),
     ('atmyoldschool','Phoebe Terese','phoebe@walkerville.edu','password','https://i.imgur.com/AqnHCDo.png'),
@@ -44,12 +44,25 @@ user_data = [
     ('accordingtomyresearch','Dorothy Ann "D.A" Hudson','da@walkerville.edu','password','https://i.imgur.com/qPjJccl.png'),
     ('isitjustme','Ralph Alessandro Giuseppe "Ralphie" Tennelli','ralphie@walkerville.edu','password','https://i.imgur.com/Oa9skL9.png'),
     ('whatarewegonnado','Wanda Li','wanda@walkerville.edu','password','https://i.imgur.com/u8MPGlJ.png'),
+    ('ohcaptainmycaptain','John Keating','keating@welton.edu','password','https://i.imgur.com/ecx4XXw.png'),
+    ('heisenberg','Walter White','white@albuquerque.edu','password','https://i.imgur.com/jGVjRZd.png'),
+    ('khanacademy','Salman "Sal" Khan','sal@khanacademy.org','password','https://i.imgur.com/qxhd9kq.png')
 ]
 toot_data=[
     (0,None,"""Seatbelts everyone! We\'re going on a #FieldTrip today!
     It\'s time to take chances! Make mistakes! Get messy!
-    @shouldvestayedhometoday @wevebeenfrizzled @punderdog @atmyoldschool @ohbadohbad @accordingtomyresearch @isitjustme @whatarewegonnado"""),
-    (2,0,'I knew I should have stayed home today.')
+    @shouldhavestayedhometoday @wevebeenfrizzled @punderdog @atmyoldschool @ohbadohbad @accordingtomyresearch @isitjustme @whatarewegonnado"""),
+    (2,0,'Please let this be a normal #FieldTrip.'),
+    (5,0,'Awesome! At my old school, we almost never went on field trips.'),
+    (6,None,'Oh bad! Oh bad! Oh bad bad bad! The big #algebra test is tomorrow, and I haven\'t studied at all!'),
+    (9,3,'What are we gonna do? Can anyone help us study after school today? #tootee'),
+    (12,3,'Sure I can help with #algebra. I just sent DMs to both of you. #tooter'),
+    (8,None,'Is it just me, or is this #chemistry lab impossible? I just don\'t get it at all. #tootee'),
+    (11,6,'I\'m a #chemistry teacher, and I\'d be happy to help you out! I have an RV in the desert where I do lots of cool experiments. #tooter'),
+    (7,6,'According to my research, Mr. White\'s experiments aren\'t quite what we usually do in Ms. Frizzle\'s class. Be careful @isitjustme! #review'),
+    (10,None,'Hi, I\'m Mr. Keating, and I\'m offering afforable tutoring in reading, writing, grammar, and spelling. Follow me for more info. #english #tooter'),
+    (4,9,'I can vouch for Mr. Keating. Thanks @ohcaptainmycaptain for teaching me the meaning of the word "many". It means a lot!\n#pun #review'),
+    (3,10,"*groans* CARLOS! But seriously though, Mr. Keating is an amazing #english tooter\n#review"),
 ]
 
 def reset_all():
