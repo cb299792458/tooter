@@ -14,7 +14,7 @@ class Toot(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey(User.id))
     author = db.relationship('User', backref='toots')
 
-    parent_id = db.Column(db.Integer, db.ForeignKey('toots.id'))
+    parent_id = db.Column(db.Integer, db.ForeignKey(id))
     children = db.relationship('Toot', backref=db.backref('parent', remote_side=[id]))
 
     text = db.Column(db.String(280), nullable=False)
