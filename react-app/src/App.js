@@ -21,22 +21,6 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       <div id="app">
-        <div id="left-bar">
-            <div>Small Icon</div>
-            <p>Home</p>
-            <p>Explore</p>
-            <p>Notifications</p>
-            <p>Messages</p>
-            <p>Lists</p>
-            <p>Bookmarks</p>
-            <p>Communities</p>
-            <p>Verified</p>
-            <p>Profile</p>
-            <p>More</p>
-
-            <div>Post</div>
-            <div>Account Switcher</div>
-        </div>
         {isLoaded && (
           <Switch>
             <Route path="/login" >
@@ -46,10 +30,60 @@ function App() {
               <SignupFormPage />
             </Route>
             <Route path="/home">
-              <Home />
+              <>
+                <div id="left-bar">
+                    <div>Small Icon</div>
+                    <p>Home</p>
+                    <p>Explore</p>
+                    <p>Notifications</p>
+                    <p>Messages</p>
+                    <p>Lists</p>
+                    <p>Bookmarks</p>
+                    <p>Communities</p>
+                    <p>Verified</p>
+                    <p>Profile</p>
+                    <p>More</p>
+
+                    <div>Post</div>
+                    <div>Account Switcher</div>
+                </div>
+                <Home />
+                <div id="right-bar">
+                  <input type="search" placeholder="Search Tooter"></input>
+                  <div>Get Verified</div>
+                  <div>What's Happening</div>
+                  <div>Who to Follow</div>
+                  <div>Footer</div>
+                </div>
+              </>
             </Route>
             <Route path="/toot/:tootId">
-              <TootPage />
+              <>
+                <div id="left-bar">
+                    <div>Small Icon</div>
+                    <p>Home</p>
+                    <p>Explore</p>
+                    <p>Notifications</p>
+                    <p>Messages</p>
+                    <p>Lists</p>
+                    <p>Bookmarks</p>
+                    <p>Communities</p>
+                    <p>Verified</p>
+                    <p>Profile</p>
+                    <p>More</p>
+
+                    <div>Post</div>
+                    <div>Account Switcher</div>
+                </div>
+                <TootPage />
+                <div id="right-bar">
+                  <input type="search" placeholder="Search Tooter"></input>
+                  <div>Get Verified</div>
+                  <div>What's Happening</div>
+                  <div>Who to Follow</div>
+                  <div>Footer</div>
+                </div>
+              </>
             </Route>
             <Route path="/splashpage">
               <SplashPage />
@@ -59,13 +93,6 @@ function App() {
             </Route>
           </Switch>
         )}
-        <div id="right-bar">
-          <input type="search" placeholder="Search Tooter"></input>
-          <div>Get Verified</div>
-          <div>What's Happening</div>
-          <div>Who to Follow</div>
-          <div>Footer</div>
-        </div>
       </div>
     </>
   );
