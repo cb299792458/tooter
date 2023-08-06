@@ -17,9 +17,8 @@ class User(db.Model, UserMixin):
     picture = db.Column(db.String(255))
 
     follows = db.Table('follows',
-        db.Column('follow_id',  db.Integer, primary_key=True),
-        db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
-        db.Column('followee_id', db.Integer, db.ForeignKey('users.id'))
+        db.Column('follower_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+        db.Column('followee_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
     )
 
     followers = db.relationship('User', secondary='follows',
