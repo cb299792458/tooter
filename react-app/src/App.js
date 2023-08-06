@@ -5,6 +5,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import TootPage from "./components/TootPage";
 import SplashPage from "./components/SplashPage";
+import LeftBar from "./components/LeftBar";
+import RightBar from "./components/RightBar"
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
@@ -16,7 +18,7 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
+  
   return (
     <>
       <Navigation isLoaded={isLoaded} />
@@ -31,58 +33,16 @@ function App() {
             </Route>
             <Route path="/home">
               <>
-                <div id="left-bar">
-                    <div>Small Icon</div>
-                    <p>Home</p>
-                    <p>Explore</p>
-                    <p>Notifications</p>
-                    <p>Messages</p>
-                    <p>Lists</p>
-                    <p>Bookmarks</p>
-                    <p>Communities</p>
-                    <p>Verified</p>
-                    <p>Profile</p>
-                    <p>More</p>
-
-                    <div>Post</div>
-                    <div>Account Switcher</div>
-                </div>
+                <LeftBar />
                 <Home />
-                <div id="right-bar">
-                  <input type="search" placeholder="Search Tooter"></input>
-                  <div>Get Verified</div>
-                  <div>What's Happening</div>
-                  <div>Who to Follow</div>
-                  <div>Footer</div>
-                </div>
+                <RightBar />
               </>
             </Route>
             <Route path="/toot/:tootId">
               <>
-                <div id="left-bar">
-                    <div>Small Icon</div>
-                    <p>Home</p>
-                    <p>Explore</p>
-                    <p>Notifications</p>
-                    <p>Messages</p>
-                    <p>Lists</p>
-                    <p>Bookmarks</p>
-                    <p>Communities</p>
-                    <p>Verified</p>
-                    <p>Profile</p>
-                    <p>More</p>
-
-                    <div>Post</div>
-                    <div>Account Switcher</div>
-                </div>
+                <LeftBar />
                 <TootPage />
-                <div id="right-bar">
-                  <input type="search" placeholder="Search Tooter"></input>
-                  <div>Get Verified</div>
-                  <div>What's Happening</div>
-                  <div>Who to Follow</div>
-                  <div>Footer</div>
-                </div>
+                <RightBar />
               </>
             </Route>
             <Route path="/splashpage">
