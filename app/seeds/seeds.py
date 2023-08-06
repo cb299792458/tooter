@@ -62,7 +62,7 @@ toot_data=[
     (7,6,'According to my research, Mr. White\'s experiments aren\'t quite what we usually do in Ms. Frizzle\'s class. Be careful @isitjustme! #review'),
     (10,None,'Hi, I\'m Mr. Keating, and I\'m offering afforable tutoring in reading, writing, grammar, and spelling. Follow me for more info.\n#english #tooter'),
     (4,9,'I can vouch for Mr. Keating. Thanks @ohcaptainmycaptain for teaching me the meaning of the word "many". It means a lot!\n#pun #review'),
-    (3,10,"groans CARLOS! But seriously though, Mr. Keating is an amazing #english tooter\n#review"),
+    (3,10,"*groans* CARLOS! But seriously though, Mr. Keating is an amazing #english tooter\n#review"),
 ]
 
 def reset_all():
