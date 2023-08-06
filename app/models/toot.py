@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA
 from sqlalchemy import TIMESTAMP
 import datetime
+from .user import User
 
 class Toot(db.Model):
     __tablename__ = 'toots'
@@ -10,7 +11,7 @@ class Toot(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey(User.id))
     author = db.relationship('User', backref='toots')
 
     parent_id = db.Column(db.Integer, db.ForeignKey('toots.id'))
