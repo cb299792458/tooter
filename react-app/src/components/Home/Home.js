@@ -13,6 +13,7 @@ function Home(){
     },[dispatch]);
 
     const [text,setText] = useState('');
+    const [onlyFollows,setOnlyFollows] = useState(false);
 
     const sessionUser = useSelector((state) => state.session.user);
     if(!sessionUser) return <Redirect to="/splashpage" />
@@ -38,20 +39,31 @@ function Home(){
         }
     }
 
+    function filterToots(toot){
+        if(!onlyFollows) return toot.parent_id===null;
+        if(toot.author_id===sessionUser.id) return true;
+        return toot.parent_id===null && sessionUser.followees.includes(toot.id)
+    }
+
     return(
         <div id="home">
             <h2>Home</h2>
-            <div>
-                <span>All Toots | Following</span>
+            <div id="follow_bar">
+                <span onClick={()=>setOnlyFollows(false)} style={onlyFollows ? {} : {fontWeight: "bold"}} >All Toots</span>
+                <span onClick={()=>setOnlyFollows(true)} style={onlyFollows ? {fontWeight: "bold"} : {}} >Following</span>
             </div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={text} placeholder="Write a toot..." 
-                onChange={(e)=>setText(e.target.value)} size={70}/>
-                <button type="submit">Toot!</button>
-            </form>
+            <div id="toot_form">
+            <   img src={sessionUser.picture} id="picture" alt='your profile pic'/>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" value={text} placeholder="Write a toot..." 
+                    onChange={(e)=>setText(e.target.value)} size={60}/>
+                    <button type="submit">Toot!</button>
+                </form>
+            </div>
             <div>
                 {toots
-                    .filter((toot)=>toot.parent_id===null)
+                    // .filter((toot)=>toot.parent_id===null)
+                    .filter(filterToots)
                     .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{
                         return <Toot toot={toot} key={toot.id}/>

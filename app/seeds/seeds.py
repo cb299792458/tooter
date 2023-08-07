@@ -74,8 +74,8 @@ def reset_all():
         new_user=User(username=username,name=name,email=email,password=password,picture=picture)
         users.append(new_user)
 
-    # for user in users[1:]:
-    #     users[0].followers.append(user)
+    for user in users[1:]:
+        users[0].followers.append(user)
 
     toots=[]
     for (author_idx,parent,text) in toot_data:

@@ -1,8 +1,13 @@
-#picture {
-    height: 60px;
-    border-radius: 30px;
-}
 
 #toot, #toot a {
     display: flex;
+}
+
+#toot a:hover {
+    background-color: #f8f4f4;
+}
+
+#stats {
+    display: flex;
+    justify-content: space-between;
 }

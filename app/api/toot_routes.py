@@ -7,14 +7,18 @@ toot_routes = Blueprint('toots', __name__)
 @toot_routes.route('/')
 def toots():
     toots = Toot.query.all()
-    # toots.sort(key=lambda toot: int(toot.id))
+    # for toot in toots:
+    #     toot.views+=1
+    # db.session.commit()
+
     return [toot.to_dict() for toot in toots]
 
 @toot_routes.route('/new',methods=['POST'])
 def create_toot():
     data=request.json
 
-    toot = Toot(text=data['text'],author_id=data['author_id'])
+    toot = Toot(text=data['text'],author_id=data['author_id'],
+                parent_id=data['parent_id'] if 'parent_id' in data else None)
     db.session.add(toot)
     db.session.commit()
     
@@ -28,4 +32,6 @@ def replies(id):
 @toot_routes.route('/<int:id>')
 def toot(id):
     toot = Toot.query.get(id)
+    toot.views+=1
+    db.session.commit()
     return toot.to_dict()

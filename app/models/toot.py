@@ -19,6 +19,9 @@ class Toot(db.Model):
 
     text = db.Column(db.String(280), nullable=False)
     time = db.Column(TIMESTAMP,default=datetime.datetime.utcnow)
+    views = db.Column(db.Integer, default=0)
+    likes = db.Column(db.Integer, default=0)
+
 
     def to_dict(self):
         return {
@@ -28,7 +31,10 @@ class Toot(db.Model):
             'text': self.text,
             'parent_id': self.parent_id,
             'time': self.time,
-            'has_replies': len(self.replies())>0,
+            'reply_count': len(self.replies()),
+            'views': self.views,
+            'likes': self.likes,
+            # 'replies': [c.to_dict() for c in self.children],
             # 'parent': self.parent.to_dict(),
         }
     
