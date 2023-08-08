@@ -47,7 +47,7 @@ function Home(){
 
     return(
         <div id="home">
-            <h2>Home</h2>
+            <h4>Home</h4>
             <div id="follow_bar">
                 <span onClick={()=>setOnlyFollows(false)} style={onlyFollows ? {} : {fontWeight: "bold"}} >All Toots</span>
                 <span onClick={()=>setOnlyFollows(true)} style={onlyFollows ? {fontWeight: "bold"} : {}} >Following</span>

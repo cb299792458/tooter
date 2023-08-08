@@ -1,11 +1,26 @@
 import React from "react";
 import {format} from 'timeago.js';
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useParams } from "react-router-dom";
 
 // function Toot({toot}){
 const Toot = React.forwardRef(({toot},ref) => {
-
     const {tootId}=useParams();
+
+    // const puncts = './!'.split('')
+    function formatText(text){
+        let words = text.split(' ');
+        let res = <span>
+            {words.map((word,i)=>{
+                if(word && word[0] && (word[0]==='@' || word[0]==='#')){
+                    return <span key={i}><Link as="span" to={`/search/${word.slice(1)}`}>{word}</Link> </span>
+                } else {
+                    return <span key={i}>{word+' '}</span>;
+                }
+            })}
+        </span>
+        return res
+    }
+
     const innerToot=<>
         <img src={toot.author.picture||
             'https://merriam-webster.com/assets/mw/images/article/art-wap-article-main/egg-3442-e1f6463624338504cd021bf23aef8441@1x.jpg'}
@@ -15,7 +30,7 @@ const Toot = React.forwardRef(({toot},ref) => {
             <span id="author">{toot.author.name} @{toot.author.username} {format(toot.time)}</span>
             <br></br>
             <br></br>
-            <p>{toot.text}</p>
+            {formatText(toot.text)}
             <br></br>
             <span id="stats">
                 <span>

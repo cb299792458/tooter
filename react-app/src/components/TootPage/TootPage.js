@@ -25,7 +25,6 @@ function TootPage(){
         // eslint-disable-next-line
     },[scrollTarget.current])
     
-    
     function scroll(){
         if(scrollTarget.current){
             scrollTarget.current.scrollIntoView({
@@ -33,7 +32,6 @@ function TootPage(){
                 block: 'start'
             });
         }
-        return ''
     }
 
     const sessionUser = useSelector((state)=>state.session.user);
@@ -58,6 +56,7 @@ function TootPage(){
             alert('There is an issue with your upload. Check the error messages at the bottom of the form.')
         }
     }
+
 
     return(
         <div id="toot_page">

@@ -1,9 +1,13 @@
 
-#toot, #toot a {
+#toot, #toot > a {
     display: flex;
 }
 
-#toot a:hover {
+#toot span a {
+    color: #34acf5;
+}
+
+#toot div:hover {
     background-color: #f8f4f4;
 }
 
