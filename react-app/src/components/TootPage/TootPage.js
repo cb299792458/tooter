@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import Toot from "../Toot/Toot";
 import { fetchToot, getToot, fetchReplies, getToots, fetchParent, getParent } from "../../store/toot";
 
@@ -11,7 +11,8 @@ function TootPage(){
     const replies = useSelector(getToots);
     const parent = useSelector(getParent());
     const scrollTarget = useRef(null);
-
+    const [text,setText] = useState('');
+    
     useEffect(()=>{
         dispatch(fetchToot(tootId));
         dispatch(fetchReplies(tootId))
@@ -19,8 +20,12 @@ function TootPage(){
     useEffect(()=>{
         if(toot) dispatch(fetchParent(toot.parent_id))
     },[dispatch,toot])
-
-
+    useEffect(()=>{
+        scroll();
+        // eslint-disable-next-line
+    },[scrollTarget.current])
+    
+    
     function scroll(){
         if(scrollTarget.current){
             scrollTarget.current.scrollIntoView({
@@ -30,12 +35,10 @@ function TootPage(){
         }
         return ''
     }
-    useEffect(()=>{
-        scroll();
-    },[scrollTarget.current])
 
-    const sessionUser = useSelector(state=>state.session.user);
-    const [text,setText] = useState('');
+    const sessionUser = useSelector((state)=>state.session.user);
+    if(!sessionUser) return <Redirect to="/splashpage" />
+
     const handleSubmit = async function(e){
         e.preventDefault();
         if(text){

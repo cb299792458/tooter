@@ -8,7 +8,7 @@ import SplashPage from "./components/SplashPage";
 import LeftBar from "./components/LeftBar";
 import RightBar from "./components/RightBar"
 import { authenticate } from "./store/session";
-import Navigation from "./components/Navigation";
+// import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import { Redirect } from "react-router-dom";
 
@@ -21,8 +21,9 @@ function App() {
   
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {/* <Navigation isLoaded={isLoaded} /> */}
       <div id="app">
+        <LeftBar />
         {isLoaded && (
           <Switch>
             <Route path="/login" >
@@ -33,16 +34,14 @@ function App() {
             </Route>
             <Route path="/home">
               <>
-                <LeftBar />
                 <Home />
-                <RightBar />
               </>
             </Route>
             <Route path="/toot/:tootId">
               <>
-                <LeftBar />
+                {/* <LeftBar /> */}
                 <TootPage />
-                <RightBar />
+                {/* <RightBar /> */}
               </>
             </Route>
             <Route path="/splashpage">
@@ -53,6 +52,7 @@ function App() {
             </Route>
           </Switch>
         )}
+        <RightBar />
       </div>
     </>
   );
