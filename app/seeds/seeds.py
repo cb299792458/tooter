@@ -46,7 +46,11 @@ user_data = [
     ('whatarewegonnado','Wanda Li','wanda@walkerville.edu','password','https://i.imgur.com/u8MPGlJ.png'),
     ('ohcaptainmycaptain','John Keating','keating@welton.edu','password','https://i.imgur.com/ecx4XXw.png'),
     ('heisenberg','Walter White','white@albuquerque.edu','password','https://i.imgur.com/jGVjRZd.png'),
-    ('khanacademy','Salman "Sal" Khan','sal@khanacademy.org','password','https://i.imgur.com/qxhd9kq.png')
+    ('khanacademy','Salman "Sal" Khan','sal@khanacademy.org','password','https://i.imgur.com/qxhd9kq.png'),
+    ('crashcourse', 'John and Hank Green', 'bros@crashcourse.com', 'password', 'https://i.imgur.com/5QoMvWF.png'),
+    ('no_to_violence', 'Hanan Al Hroub', 'hanan@hroub.com', 'password', 'https://imgur.com/wJMcEwt'),
+    ('stand_and_deliver', 'Jaime Escalante', 'jaime@eastla.edu', 'password', 'https://imgur.com/iydAx0a'),
+    ('brian', 'Brian Lam', 'brianrlam@gmail.com', 'wordpass', 'https://imgur.com/NQamtCn'),
 ]
 toot_data=[
     (0,None,"""Seatbelts everyone! We\'re going on a #FieldTrip today!
@@ -60,9 +64,9 @@ toot_data=[
     (8,None,'Is it just me, or is this #chemistry lab impossible? I just don\'t get it at all. #tootee'),
     (11,6,'I\'m a #chemistry teacher, and I\'d be happy to help you out! I have an RV in the desert where I do lots of cool experiments. #tooter'),
     (7,6,'According to my research, Mr. White\'s experiments aren\'t quite what we usually do in Ms. Frizzle\'s class. Be careful @isitjustme! #review'),
-    (10,None,'Hi, I\'m Mr. Keating, and I\'m offering afforable tutoring in reading, writing, grammar, and spelling. Follow me for more info.\n#english #tooter'),
-    (4,9,'I can vouch for Mr. Keating. Thanks @ohcaptainmycaptain for teaching me the meaning of the word "many". It means a lot!\n#pun #review'),
-    (3,10,"*groans* CARLOS! But seriously though, Mr. Keating is an amazing #english tooter\n#review"),
+    (10,None,'Hi, I\'m Mr. Keating, and I\'m offering afforable tutoring in reading, writing, grammar, and spelling. Follow me for more info. #english #tooter'),
+    (4,9,'I can vouch for Mr. Keating. Thanks @ohcaptainmycaptain for teaching me the meaning of the word "many". It means a lot! #pun #review'),
+    (3,10,"*groans* CARLOS! But seriously though, Mr. Keating is an amazing #english tooter. #review"),
 ]
 
 def reset_all():
@@ -76,6 +80,8 @@ def reset_all():
 
     for user in users[1:]:
         users[0].followers.append(user)
+    for user in users[10:]:
+        users[1].followers.append(user)
 
     toots=[]
     for (author_idx,parent,text) in toot_data:

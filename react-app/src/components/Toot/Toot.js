@@ -6,13 +6,18 @@ import { Link, useParams } from "react-router-dom";
 const Toot = React.forwardRef(({toot},ref) => {
     const {tootId}=useParams();
 
-    // const puncts = './!'.split('')
+    const puncts = './!'.split('')
     function formatText(text){
         let words = text.split(' ');
         let res = <span>
             {words.map((word,i)=>{
                 if(word && word[0] && (word[0]==='@' || word[0]==='#')){
-                    return <span key={i}><Link as="span" to={`/search/${word.slice(1)}`}>{word}</Link> </span>
+                    let space=' '
+                    if(puncts.includes(word.at(-1))){
+                        space=word.at(-1)+' '
+                        word=word.slice(0,word.length-1)
+                    }
+                    return <span key={i}><Link as="span" to={`/search/${word.slice(1)}`}>{word}</Link>{space}</span>
                 } else {
                     return <span key={i}>{word+' '}</span>;
                 }
