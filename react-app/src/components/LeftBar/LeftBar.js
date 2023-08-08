@@ -12,8 +12,8 @@ function LeftBar(){
 
     return <>
         {sessionUser && <div id="left-bar">
-            <div>Small Icon</div>
-            <p>Home</p>
+            <a href="/"><div>Small Icon</div></a>
+            <a href="/"><p>Home</p></a>
             <p>Explore</p>
             <p>Notifications</p>
             <p>Messages</p>

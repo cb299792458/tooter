@@ -18,7 +18,7 @@ function TootPage(){
         dispatch(fetchReplies(tootId))
     },[dispatch,tootId])
     useEffect(()=>{
-        if(toot) dispatch(fetchParent(toot.parent_id))
+        if(toot && toot.parent_id) dispatch(fetchParent(toot.parent_id))
     },[dispatch,toot])
     useEffect(()=>{
         scroll();
