@@ -53,7 +53,7 @@ function Home(){
                 <span onClick={()=>setOnlyFollows(true)} style={onlyFollows ? {fontWeight: "bold"} : {}} >Following</span>
             </div>
             <div id="toot_form">
-            <img src={sessionUser.picture} id="picture" alt='your profile pic'/>
+            <img src={sessionUser.picture} id="small_picture" alt='your profile pic'/>
                 <form onSubmit={handleSubmit}>
                     <input type="text" value={text} placeholder="Write a toot..." 
                     onChange={(e)=>setText(e.target.value)} size={60}/>

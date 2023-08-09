@@ -9,7 +9,7 @@ import SplashPage from "./components/SplashPage";
 import LeftBar from "./components/LeftBar";
 import RightBar from "./components/RightBar"
 import Search from "./components/Search";
-// import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import ProfilePage from "./components/ProfilePage";
 
@@ -22,7 +22,7 @@ function App() {
   
   return (
     <>
-      {/* <Navigation isLoaded={isLoaded} /> */}
+      <Navigation isLoaded={isLoaded} />
       <div id="app">
         <LeftBar />
         {isLoaded && (

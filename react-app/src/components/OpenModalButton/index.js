@@ -9,14 +9,16 @@ function OpenModalButton({
 }) {
   const { setModalContent, setOnModalClose } = useModal();
 
-  const onClick = () => {
+  const onClick = (e) => {
+    e.preventDefault();
     if (onModalClose) setOnModalClose(onModalClose);
     setModalContent(modalComponent);
     if (onButtonClick) onButtonClick();
   };
 
   return (
-    <button onClick={onClick}>{buttonText}</button>
+    // <div onClick={onClick}>{buttonText}</div>
+    <div onClick={onClick} dangerouslySetInnerHTML={{__html: buttonText}}></div>
   );
 }
 
