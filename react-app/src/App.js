@@ -11,6 +11,7 @@ import RightBar from "./components/RightBar"
 import Search from "./components/Search";
 // import Navigation from "./components/Navigation";
 import Home from "./components/Home";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
                 </Route>
                 <Route path="/toot/:tootId">
                     <TootPage />
+                </Route>
+                <Route path="/user/:userId">
+                    <ProfilePage />
                 </Route>
                 <Route path="/search/:query">
                     <Search />

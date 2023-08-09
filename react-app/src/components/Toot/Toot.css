@@ -3,8 +3,12 @@
     display: flex;
 }
 
-#toot span a {
+#tag {
     color: #34acf5;
+}
+
+#username_link:hover {
+    text-decoration: underline;
 }
 
 #toot div:hover {

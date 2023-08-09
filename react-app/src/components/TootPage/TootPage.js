@@ -15,15 +15,15 @@ function TootPage(){
     
     useEffect(()=>{
         dispatch(fetchToot(tootId));
-        dispatch(fetchReplies(tootId))
-    },[dispatch,tootId])
+        dispatch(fetchReplies(tootId));
+    },[dispatch,tootId]);
     useEffect(()=>{
-        if(toot && toot.parent_id) dispatch(fetchParent(toot.parent_id))
-    },[dispatch,toot])
+        if(toot && toot.parent_id) dispatch(fetchParent(toot.parent_id));
+    },[dispatch,toot]);
     useEffect(()=>{
         scroll();
         // eslint-disable-next-line
-    },[scrollTarget.current])
+    },[scrollTarget.current]);
     
     function scroll(){
         if(scrollTarget.current){
@@ -63,7 +63,7 @@ function TootPage(){
             {parent && <Toot toot={parent}/>}
             {toot && <Toot ref={scrollTarget} toot={toot}/>}
             <div id="reply_form">
-                <img src={sessionUser.picture} id="picture" alt='your profile pic'/>
+                <img src={sessionUser.picture} id="small_picture" alt='your profile pic'/>
                 <form onSubmit={handleSubmit}>
                     <input type="text" value={text} placeholder="Post your reply!"
                     onChange={(e)=>setText(e.target.value)} size={60}/>

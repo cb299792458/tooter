@@ -55,6 +55,7 @@ export const fetchReplies = (tootId) => async(dispatch) => {
 const tootsReducer = (state = {}, action) => {
     let newState = {...state};
     switch(action.type){
+        
         case RECEIVE_TOOT:
             newState[action.toot.id] = action.toot;
             return newState; 

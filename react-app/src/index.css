@@ -55,9 +55,13 @@ a:link, a:visited {
 	text-decoration: none;
 	color: inherit;
 }
-#picture {
+#small_picture {
     height: 60px;
     border-radius: 30px;
+}
+#picture {
+    height: 120px;
+    border-radius: 60px;
 }
 div * {
 	font-family: "TwitterChirp", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;

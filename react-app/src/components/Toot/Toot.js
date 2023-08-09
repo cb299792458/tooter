@@ -17,7 +17,7 @@ const Toot = React.forwardRef(({toot},ref) => {
                         space=word.at(-1)+' '
                         word=word.slice(0,word.length-1)
                     }
-                    return <span key={i} dangerouslySetInnerHTML={{__html: `<a href='/search/${word.slice(1)}'>${word+space}</a>`}}/>
+                    return <span key={i} dangerouslySetInnerHTML={{__html: `<a id="tag" href='/search/${word.slice(1)}'>${word+space}</a>`}}/>
                 } else {
                     return <span key={i}>{word+' '}</span>;
                 }
@@ -27,15 +27,21 @@ const Toot = React.forwardRef(({toot},ref) => {
     }
 
     const innerToot=<>
-        <img src={toot.author.picture||
-            'https://merriam-webster.com/assets/mw/images/article/art-wap-article-main/egg-3442-e1f6463624338504cd021bf23aef8441@1x.jpg'}
-            alt="" id="picture">
-        </img>
+        <div id="left" style={{height: 'min-content'}} dangerouslySetInnerHTML={{__html:`<a href='/user/${toot.author.id}'>
+            <img src=${toot.author.picture||
+                'https://merriam-webster.com/assets/mw/images/article/art-wap-article-main/egg-3442-e1f6463624338504cd021bf23aef8441@1x.jpg'}
+                alt="" id="small_picture">
+            </img>
+        </a>`}}/>
         <div id="right">
-            <span id="author">{toot.author.name} @{toot.author.username} {format(toot.time)}</span>
+            {/* <span id="author">{toot.author.name} @{toot.author.username} {format(toot.time)}</span> */}
+            <span id="author" dangerouslySetInnerHTML={
+                {__html: `<a href='/user/${toot.author.id}'><span id="username_link">${toot.author.name}</span> @${toot.author.username}</a> ${format(toot.time)}` }
+            }/>
             <br></br>
             <br></br>
             {formatText(toot.text)}
+            <br></br>
             <br></br>
             <span id="stats">
                 <span>
