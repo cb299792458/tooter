@@ -50,7 +50,7 @@ function TootPage(){
             
             if(res.ok){
                 setText("");
-                dispatch(fetchReplies(tootId))
+                dispatch(fetchReplies(tootId));
             }
         } else {
             alert('There is an issue with your upload. Check the error messages at the bottom of the form.')
@@ -70,7 +70,10 @@ function TootPage(){
                     <button type="submit">Reply</button>
                 </form>
             </div>
-            {replies && replies.filter(reply=>reply.id!==parseInt(tootId)).map((reply)=>{
+            {replies && replies
+                .filter(reply=>reply.id!==parseInt(tootId))
+                .toSorted((a,b)=>Date.parse(b.time)-Date.parse(a.time))
+                .map((reply)=>{
                 return <Toot toot={reply} key={reply.id}/>
             })}
         </div>

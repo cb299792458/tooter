@@ -11,13 +11,16 @@ export function ModalProvider({ children }) {
   const [onModalClose, setOnModalClose] = useState(null);
 
   const closeModal = () => {
-    setModalContent(null); // clear the modal contents
-    // If callback function is truthy, call the callback function and reset it
-    // to null:
-    if (typeof onModalClose === 'function') {
-      setOnModalClose(null);
-      onModalClose();
-    }
+      // If callback function is truthy, call the callback function and reset it
+      // to null:
+      if (typeof onModalClose === 'function') {
+          if(modalContent) onModalClose();
+          setOnModalClose(null);
+        }
+        setModalContent(null); // clear the modal contents
+        
+        // // workaround for early onModalClose call
+        // window.location.reload();
   };
 
   const contextValue = {

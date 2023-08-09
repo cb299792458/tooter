@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 
-function ReplyModal({parent}){
+function ReplyModal({parent,setReplies}){
     const [text,setText] = useState('');
     const sessionUser = useSelector(state=>state.session.user);
     const {closeModal} = useModal();
@@ -22,6 +22,7 @@ function ReplyModal({parent}){
                 // this is a shortcut
                 // future fix: close modal, fetch replies of parent
                 // window.location.reload(false);
+                setReplies(r=>r+1);
                 closeModal();
             }
         } else {

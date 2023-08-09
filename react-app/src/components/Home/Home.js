@@ -64,7 +64,7 @@ function Home(){
                 {toots
                     // .filter((toot)=>toot.parent_id===null)
                     .filter(filterToots)
-                    .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
+                    .toSorted((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{
                         return <Toot toot={toot} key={toot.id}/>
                     }
