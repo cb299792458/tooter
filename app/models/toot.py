@@ -34,10 +34,26 @@ class Toot(db.Model):
             'reply_count': len(self.replies()),
             'views': self.views,
             'likes': self.likes,
-            # 'replies': [c.to_dict() for c in self.children],
-            # 'parent': self.parent.to_dict(),
+            'tags': self.tags(),
+            'mentions': self.mentions(),
         }
     
     def replies(self):
         if not self.children: return []
         return [c.to_dict() for c in self.children]
+    
+    def tags(self):
+        res=[]
+        words = self.text.split(' ')
+        for word in words:
+            if word and word[0]=='#':
+                res.append(word[1:].lower())
+        return res
+    
+    def mentions(self):
+        res=[]
+        words = self.text.split(' ')
+        for word in words:
+            if word and word[0]=='@':
+                res.append(word[1:])
+        return res

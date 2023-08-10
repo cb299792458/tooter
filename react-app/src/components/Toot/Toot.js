@@ -10,7 +10,7 @@ const Toot = React.forwardRef(({toot},ref) => {
     const [replies,setReplies] = useState(toot.reply_count);
     const [copied,setCopied] = useState(false);
 
-    const puncts = './!'.split('');
+    const puncts = './!\n'.split('');
     function formatText(text){
         let words = text.split(' ');
         let res = <span>
@@ -21,7 +21,8 @@ const Toot = React.forwardRef(({toot},ref) => {
                         space=word.at(-1)+' '
                         word=word.slice(0,word.length-1)
                     }
-                    return <span key={i} dangerouslySetInnerHTML={{__html: `<a id="tag" href='/search/${word.slice(1)}'>${word+space}</a>`}}/>
+                    const type = word[0]==='@' ? 'u=' : 't='
+                    return <span key={i} dangerouslySetInnerHTML={{__html: `<a id="tag" href='/search/${type}${word.slice(1)}'>${word+space}</a>`}}/>
                 } else {
                     return <span key={i}>{word+' '}</span>;
                 }
@@ -43,7 +44,6 @@ const Toot = React.forwardRef(({toot},ref) => {
             </img>
         </a>`}}/>
         <div id="right">
-            {/* <span id="author">{toot.author.name} @{toot.author.username} {format(toot.time)}</span> */}
             <span id="author" dangerouslySetInnerHTML={
                 {__html: `<a href='/user/${toot.author.id}'><span id="username_link">${toot.author.name}</span> @${toot.author.username}</a> ${format(toot.time)}` }
             }/>

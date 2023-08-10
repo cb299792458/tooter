@@ -11,9 +11,12 @@ function Home(){
     useEffect(()=>{
         dispatch(fetchToots());
     },[dispatch]);
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
 
     const [text,setText] = useState('');
-    const [onlyFollows,setOnlyFollows] = useState(false);
+    const [onlyFollows,setOnlyFollows] = useState(true);
 
     const sessionUser = useSelector((state) => state.session.user);
     if(!sessionUser) return <Redirect to="/splashpage" />
