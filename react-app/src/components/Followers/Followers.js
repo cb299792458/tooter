@@ -14,6 +14,24 @@ function Followers(){
         dispatch(fetchUser(userId));
         dispatch(fetchFollowers(userId));
     },[dispatch,userId])
+    
+    function toggleFollowUser(id){
+        return async function toggleFollow(e){
+            e.preventDefault();
+            const res = await fetch('/api/follows', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({follower: sessionUser.id, followee: id})
+            });
+    
+            if(res.ok){
+                window.location.reload(); 
+            }
+        }
+    }
+
 
     return <div id="followers">
         {user && <div id="user_bar">
@@ -34,13 +52,16 @@ function Followers(){
         <div id="follower_list">
             {followers && followers.map((user) => {
                 return <div id="follow_banner" key={user.id}>
-                    <img src={user.picture} alt='' id="small_picture"/>
-                    <div id="description">
-                        <h6>{user.name}</h6>
-                        <span>@{user.username}</span>
-                    </div>
+                    <a href={`/user/${user.id}`}>
+                        <img src={user.picture} alt='' id="small_picture"/>
+                        <div id="description">
+                            <h6>{user.name}</h6>
+                            <span>@{user.username}</span>
+                        </div>
+                    </a>
                     <div>
-                        {sessionUser && user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'}
+                        {/* {sessionUser && user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'} */}
+                        <span onClick={toggleFollowUser(user.id)}>{user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'}</span>
                     </div>
                 </div>
             })}

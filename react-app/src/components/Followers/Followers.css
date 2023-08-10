@@ -5,3 +5,7 @@
 #follow_banner {
     display: flex;
 }
+
+#followers{
+    width: 600px;
+}

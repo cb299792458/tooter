@@ -19,16 +19,31 @@ function ProfilePage(){
         dispatch(fetchToots());
     },[dispatch])
 
+    async function toggleFollow(e){
+        e.preventDefault();
+        const res = await fetch('/api/follows', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({follower: sessionUser.id, followee: userId})
+        });
+
+        if(res.ok){
+            window.location.reload(); 
+        }
+    }
+
     return <div id="user_page">
         {user && <>
             <div id="banner">
                 <div style={{height:200, maxWidth:600, backgroundColor: 'lightgray'}} />
                 <img src={user.picture} alt='' id="picture"/>
-                <div>{user.id===sessionUser.id ? <div>Edit Profile</div> :
+                <div id="profile_options">{user.id===sessionUser.id ? <div>Edit Profile</div> :
                     <div id="profile_options">
                         <div>Message</div>
                         <div>
-                            {user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'}
+                            <span onClick={toggleFollow}>{user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'}</span>
                         </div>
                     </div>}
                 </div>
