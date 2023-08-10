@@ -10,7 +10,7 @@ function LeftBar(){
       dispatch(logout());
     };
 
-    return <>
+    return <div id="left-holder">
         {sessionUser && <div id="left-bar">
             <a href="/"><div>Small Icon</div></a>
             <a href="/"><p>Home</p></a>
@@ -27,7 +27,7 @@ function LeftBar(){
             <div>Post</div>
             <div onClick={handleLogout}>Log Out</div>
         </div>}
-    </>
+    </div>
     
 }
 

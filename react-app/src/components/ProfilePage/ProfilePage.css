@@ -1,3 +1,19 @@
 #user_page {
-    width: 600px;
+    max-width: 600px;
+}
+
+#toot_tabs {
+    display: flex;
+    justify-content: space-around;
+}
+
+#profile_options{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#picture {
+    position: absolute;
+    top: 200px;
+    margin-left: 20px;
 }

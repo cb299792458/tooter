@@ -3,4 +3,11 @@
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    /* flex-grow: 1; */
+    width: 350px;
+}
+
+#right-holder {
+    flex-grow: 14;
+    display: flex;
 }

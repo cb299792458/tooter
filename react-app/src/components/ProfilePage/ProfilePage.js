@@ -22,14 +22,15 @@ function ProfilePage(){
     return <div id="user_page">
         {user && <>
             <div id="banner">
+                <div style={{height:200, maxWidth:600, backgroundColor: 'lightgray'}} />
                 <img src={user.picture} alt='' id="picture"/>
                 <div>{user.id===sessionUser.id ? <div>Edit Profile</div> :
-                    <>
+                    <div id="profile_options">
                         <div>Message</div>
                         <div>
                             {user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'}
                         </div>
-                    </>}
+                    </div>}
                 </div>
             </div>
             <div id="description">
@@ -39,7 +40,12 @@ function ProfilePage(){
                     <p>{user.followees.length} <span><a href={`/user/${userId}/following`}>Following</a></span> {user.followers.length} <span><a href={`/user/${userId}/followers`}>Followers</a></span></p>
                 </div>
             </div>
-            <h4>Toots</h4>
+            <div id="toot_tabs">
+                <h4>Toots</h4>
+                <h4>Retoots</h4>
+                <h4>Mentions</h4>
+                <h4>Likes</h4>
+            </div>
             <div>
                 {toots && toots
                     .filter((toot)=>toot.author.id===parseInt(userId))
