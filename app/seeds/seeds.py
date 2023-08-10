@@ -48,9 +48,9 @@ user_data = [
     ('heisenberg','Walter White','white@albuquerque.edu','password','https://i.imgur.com/jGVjRZd.png'),
     ('khanacademy','Salman "Sal" Khan','sal@khanacademy.org','password','https://i.imgur.com/qxhd9kq.png'),
     ('crashcourse', 'John and Hank Green', 'bros@crashcourse.com', 'password', 'https://i.imgur.com/5QoMvWF.png'),
-    ('no_to_violence', 'Hanan Al Hroub', 'hanan@hroub.com', 'password', 'https://imgur.com/wJMcEwt'),
-    ('stand_and_deliver', 'Jaime Escalante', 'jaime@eastla.edu', 'password', 'https://imgur.com/iydAx0a'),
-    ('brian', 'Brian Lam', 'brianrlam@gmail.com', 'wordpass', 'https://imgur.com/NQamtCn'),
+    ('no_to_violence', 'Hanan Al Hroub', 'hanan@hroub.com', 'password', 'https://imgur.com/wJMcEwt.png'),
+    ('stand_and_deliver', 'Jaime Escalante', 'jaime@eastla.edu', 'password', 'https://imgur.com/iydAx0a.png'),
+    ('brian', 'Brian Lam', 'brianrlam@gmail.com', 'wordpass', 'https://imgur.com/NQamtCn.png'),
 ]
 toot_data=[
     (0,None,"""Seatbelts everyone! We\'re going on a #FieldTrip today!
@@ -66,7 +66,11 @@ toot_data=[
     (7,6,'According to my research, Mr. White\'s experiments aren\'t quite what we usually do in Ms. Frizzle\'s class. Be careful @isitjustme! #review'),
     (10,None,'Hi, I\'m Mr. Keating, and I\'m offering afforable tutoring in reading, writing, grammar, and spelling. Follow me for more info. #english #tooter'),
     (4,9,'I can vouch for Mr. Keating. Thanks @ohcaptainmycaptain for teaching me the meaning of the word "many". It means a lot! #pun #review'),
-    (3,10,"*groans* CARLOS! But seriously though, Mr. Keating is an amazing #english tooter. #review"),
+    (3,10,"*groans* CARLOS! But seriously though, Mr. Keating is an amazing #english #tooter. #review"),
+    (13,None,'Hey, Hank and John here! While Tootr makes it easy for any #tootee to find a greate #tooter online, Crash Course is also a great resource. Don\'t forget to be awesome!'),
+    (15,12,'For all my students taking AP Calculus next year, @crashcourse is a great resource to help you prepare over the summer. #review'),
+    (14,None,'Hi Tootr, My name is Hanan Hroub, 2016 winner of the Global Teacher Prize. I specialize in teaching refugee children who have been displaced by violence. #tooter'),
+
 ]
 
 def reset_all():
@@ -82,6 +86,10 @@ def reset_all():
         users[0].followers.append(user)
     for user in users[10:]:
         users[1].followers.append(user)
+    for a in range(2,10):
+        for b in range(2,10):
+            if a!=b:
+                users[a].followers.append(users[b])
 
     toots=[]
     for (author_idx,parent,text) in toot_data:

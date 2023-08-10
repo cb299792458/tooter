@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { authenticate } from "./store/session";
+// import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import TootPage from "./components/TootPage";
@@ -9,9 +10,10 @@ import SplashPage from "./components/SplashPage";
 import LeftBar from "./components/LeftBar";
 import RightBar from "./components/RightBar"
 import Search from "./components/Search";
-// import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import ProfilePage from "./components/ProfilePage";
+import Followers from "./components/Followers";
+import Following from "./components/Following";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +40,12 @@ function App() {
                 </Route>
                 <Route path="/toot/:tootId">
                     <TootPage />
+                </Route>
+                <Route path="/user/:userId/followers">
+                    <Followers />
+                </Route>
+                <Route path="/user/:userId/following">
+                    <Following />
                 </Route>
                 <Route path="/user/:userId">
                     <ProfilePage />

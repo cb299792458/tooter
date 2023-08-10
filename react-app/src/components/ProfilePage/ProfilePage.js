@@ -33,10 +33,10 @@ function ProfilePage(){
                 </div>
             </div>
             <div id="description">
-                <h6>{user.name}</h6>
+                <h5>{user.name}</h5>
                 <span>@{user.username}</span>
                 <div id="follows">
-                    <p>{user.followees.length} Following {user.followers.length} Followers</p>
+                    <p>{user.followees.length} <span><a href={`/user/${userId}/following`}>Following</a></span> {user.followers.length} <span><a href={`/user/${userId}/followers`}>Followers</a></span></p>
                 </div>
             </div>
             <h4>Toots</h4>
