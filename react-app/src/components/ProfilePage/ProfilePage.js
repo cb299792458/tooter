@@ -68,7 +68,7 @@ function ProfilePage(){
                     .filter((toot)=>toot.author.id===parseInt(userId))
                     .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{
-                        return <Toot toot={toot} key={toot.id}/>
+                        return <Toot toot={toot} showReplying={true} key={toot.id}/>
                     }
                 )}
                 {/* {focus===LIKES && toots && toots
@@ -82,7 +82,7 @@ function ProfilePage(){
                     .filter((toot)=>toot.mentions.includes(user.username))
                     .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{
-                        return <Toot toot={toot} key={toot.id}/>
+                        return <Toot toot={toot} showReplying={true} key={toot.id}/>
                     }
                 )}
                 {/* {focus===LIKES && toots && toots

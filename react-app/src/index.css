@@ -57,10 +57,12 @@ a:link, a:visited {
 }
 #small_picture {
     height: 60px;
+    width: 60px;
     border-radius: 30px;
 }
 #picture {
     height: 120px;
+    width: 120px;
     border-radius: 60px;
 }
 div * {

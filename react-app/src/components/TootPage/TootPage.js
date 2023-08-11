@@ -63,7 +63,9 @@ function TootPage(){
             {parent && <Toot toot={parent}/>}
             {toot && <Toot ref={scrollTarget} toot={toot}/>}
             <div id="reply_form">
-                <img src={sessionUser.picture} id="small_picture" alt='your profile pic'/>
+                <a href={`/user/${sessionUser.id}`}>
+                    <img src={sessionUser.picture} id="small_picture" alt='your profile pic'/>
+                </a>
                 <form onSubmit={handleSubmit}>
                     <input type="text" value={text} placeholder="Post your reply!"
                     onChange={(e)=>setText(e.target.value)} size={60}/>

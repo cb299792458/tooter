@@ -5,7 +5,7 @@ import ReplyModal from "../ReplyModal";
 import OpenModalButton from "../OpenModalButton";
 
 // function Toot({toot}){
-const Toot = React.forwardRef(({toot},ref) => {
+const Toot = React.forwardRef(({toot,showReplying},ref) => {
     const {tootId}=useParams();
     const [replies,setReplies] = useState(toot.reply_count);
     const [copied,setCopied] = useState(false);
@@ -48,6 +48,8 @@ const Toot = React.forwardRef(({toot},ref) => {
                 {__html: `<a href='/user/${toot.author.id}'><span id="username_link">${toot.author.name}</span> @${toot.author.username}</a> ${format(toot.time)}` }
             }/>
             <br></br>
+            {/* {showReplying && toot.parent_author && <p>Replying to <a id="tag" href={`/user/${toot.parent_author.id}`}>@{toot.parent_author.username}</a></p>} */}
+            {showReplying && toot.parent_author && <p dangerouslySetInnerHTML={{__html: `Replying to <a id="tag" href="/user/${toot.parent_author.id}">@${toot.parent_author.username}</a>`}}/>}
             <br></br>
             {formatText(toot.text)}
             <br></br>

@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    picture = db.Column(db.String(255))
+    picture = db.Column(db.String(255), default="https://i.imgur.com/dQ3K4BM.jpg")
 
     follows = db.Table('follows',
         db.Column('follower_id', db.Integer, db.ForeignKey(id), primary_key=True),

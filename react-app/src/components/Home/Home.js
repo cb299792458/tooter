@@ -56,7 +56,9 @@ function Home(){
                 <span onClick={()=>setOnlyFollows(true)} style={onlyFollows ? {fontWeight: "bold"} : {}} >Following</span>
             </div>
             <div id="toot_form">
-            <img src={sessionUser.picture} id="small_picture" alt='your profile pic'/>
+            <a href={`/user/${sessionUser.id}`}>
+                <img src={sessionUser.picture} id="small_picture" alt='your profile pic'/>
+            </a>
                 <form onSubmit={handleSubmit}>
                     <input type="text" value={text} placeholder="Write a toot..." 
                     onChange={(e)=>setText(e.target.value)} size={60}/>
@@ -65,7 +67,6 @@ function Home(){
             </div>
             <div>
                 {toots
-                    // .filter((toot)=>toot.parent_id===null)
                     .filter(filterToots)
                     .toSorted((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{

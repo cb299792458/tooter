@@ -36,6 +36,7 @@ class Toot(db.Model):
             'likes': self.likes,
             'tags': self.tags(),
             'mentions': self.mentions(),
+            'parent_author': self.parent_author(),
         }
     
     def replies(self):
@@ -57,3 +58,8 @@ class Toot(db.Model):
             if word and word[0]=='@':
                 res.append(word[1:])
         return res
+    
+    def parent_author(self):
+        if not self.parent_id: return None
+        parent = User.query.get(self.parent_id)
+        return parent.to_dict()
