@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { fetchToots, getToots } from "../../store/toot";
 import Toot from "../Toot";
+import bird from "../../bird.gif";
 
 function Home(){
     const toots = useSelector(getToots);
@@ -48,6 +49,7 @@ function Home(){
         return toot.parent_id===null && sessionUser.followees.includes(toot.id)
     }
 
+    console.log(toots)
     return(
         <div id="home">
             <h4>Home</h4>
@@ -66,11 +68,12 @@ function Home(){
                 </form>
             </div>
             <div>
+                {!toots.length && <div><p>Please Wait...Preparing Toots!</p><img src={bird} alt="Loading..."/></div>}
                 {toots
                     .filter(filterToots)
                     .toSorted((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{
-                        return <Toot toot={toot} key={toot.id}/>
+                        return <Toot toot={toot} key={toot.id} />
                     }
                 )}
             </div>

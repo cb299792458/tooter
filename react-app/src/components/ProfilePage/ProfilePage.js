@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchUser, getUser } from "../../store/user";
 import { fetchToots, getToots } from "../../store/toot";
 import Toot from "../Toot";
+import bird from "../../bird.gif";
 
 function ProfilePage(){
     const dispatch = useDispatch();
@@ -35,6 +36,11 @@ function ProfilePage(){
             window.location.reload(); 
         }
     }
+    function likers(toot){
+        const res=[];
+        for(let like of toot.likes) res.push(like.liker_id);
+        return res;
+    }
 
     return <div id="user_page">
         {user && <>
@@ -64,12 +70,15 @@ function ProfilePage(){
                 <h4 id={focus===LIKES ? 'focus' : ''} onClick={()=>setFocus(LIKES)}>Likes</h4>
             </div>
             <div>
-                {focus===TOOTS && toots && toots
+                {!toots.length && <div><p>Please Wait...Preparing Toots!</p><img src={bird} alt="Loading..."/></div>}
+                {focus===TOOTS && toots && (toots
+                    .filter((toot)=>toot.author.id===parseInt(userId))
+                    .length===0 && toots.length ? 'Sorry, no toots here...😔' : toots
                     .filter((toot)=>toot.author.id===parseInt(userId))
                     .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{
                         return <Toot toot={toot} showReplying={true} key={toot.id}/>
-                    }
+                    })
                 )}
                 {/* {focus===LIKES && toots && toots
                     .filter((toot)=>toot.author.id===parseInt(userId))
@@ -78,20 +87,24 @@ function ProfilePage(){
                         return <Toot toot={toot} key={toot.id}/>
                     }
                 )} */}
-                {focus===MENTIONS && toots && toots
+                {focus===MENTIONS && toots && (toots
+                    .filter((toot)=>toot.mentions.includes(user.username))
+                    .length===0 && toots.length ? 'Sorry, no toots here...😔' : toots
                     .filter((toot)=>toot.mentions.includes(user.username))
                     .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{
                         return <Toot toot={toot} showReplying={true} key={toot.id}/>
-                    }
+                    })
                 )}
-                {/* {focus===LIKES && toots && toots
-                    .filter((toot)=>toot.author.id===parseInt(userId))
+                {focus===LIKES && toots && toots
+                    .filter((toot)=>likers(toot).includes(parseInt(userId)))
+                    .length===0 && toots.length ? 'Sorry, no toots here...😔' : toots
+                    .filter((toot)=>likers(toot).includes(parseInt(userId)))
                     .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{
                         return <Toot toot={toot} key={toot.id}/>
                     }
-                )} */}
+                )}
             </div>
 
         </>}

@@ -1,4 +1,4 @@
-from app.models import db, User, environment, SCHEMA, Toot
+from app.models import db, User, environment, SCHEMA, Toot, Like
 from sqlalchemy.sql import text
 
 
@@ -83,9 +83,9 @@ def reset_all():
         new_user=User(username=username,name=name,email=email,password=password,picture=picture)
         users.append(new_user)
 
-    for user in users[1:]:
+    for user in users[1:-1]:
         users[0].followers.append(user)
-    for user in users[10:]:
+    for user in users[10:-1]:
         users[1].followers.append(user)
     for a in range(2,10):
         for b in range(2,10):
@@ -98,8 +98,15 @@ def reset_all():
     for (author_idx,parent,text) in toot_data:
         new_toot=Toot(author=users[author_idx],parent=toots[parent] if parent!=None else None,text=text)
         toots.append(new_toot)
+
+    likes=[]
+    for i in range(4,11):
+        new_like = Like(liker_id=i,liked_toot_id=1)
+        likes.append(new_like)
+
     
     db.session.add_all(users)
     db.session.add_all(toots)
+    db.session.add_all(likes)
 
     db.session.commit()
