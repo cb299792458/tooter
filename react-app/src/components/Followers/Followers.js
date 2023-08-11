@@ -37,7 +37,9 @@ function Followers(){
         {user && <div id="user_bar">
             <div id="back_button">
                 <a href={`/user/${userId}`}>
-                    <svg viewBox="0 0 24 24"><g><path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"></path></g></svg>
+                    <svg viewBox="0 0 24 24"><g>
+                        <path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z">
+                    </path></g></svg>
                 </a>
             </div>
             <div id="user_info">
@@ -60,8 +62,9 @@ function Followers(){
                         </div>
                     </a>
                     <div>
-                        {/* {sessionUser && user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'} */}
-                        <span onClick={toggleFollowUser(user.id)}>{user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'}</span>
+                        {sessionUser && sessionUser.id!==user.id && <span onClick={toggleFollowUser(user.id)}>
+                            {user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'}
+                        </span>}
                     </div>
                 </div>
             })}

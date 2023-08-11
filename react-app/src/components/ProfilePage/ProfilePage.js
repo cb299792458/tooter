@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchUser, getUser } from "../../store/user";
@@ -11,6 +11,8 @@ function ProfilePage(){
     const user = useSelector(getUser(userId));
     const sessionUser = useSelector((state)=>state.session.user);
     const toots = useSelector(getToots);
+    const [TOOTS, RETOOTS, MENTIONS, LIKES] = ['toots','retoots','mentions','likes'];
+    const [focus, setFocus] = useState(TOOTS);
 
     useEffect(()=>{
         dispatch(fetchUser(userId));
@@ -56,19 +58,40 @@ function ProfilePage(){
                 </div>
             </div>
             <div id="toot_tabs">
-                <h4>Toots</h4>
-                <h4>Retoots</h4>
-                <h4>Mentions</h4>
-                <h4>Likes</h4>
+                <h4 id={focus===TOOTS ? 'focus' : ''} onClick={()=>setFocus(TOOTS)}>Toots</h4>
+                <h4 id={focus===RETOOTS ? 'focus' : ''} onClick={()=>setFocus(RETOOTS)}>Retoots</h4>
+                <h4 id={focus===MENTIONS ? 'focus' : ''} onClick={()=>setFocus(MENTIONS)}>Mentions</h4>
+                <h4 id={focus===LIKES ? 'focus' : ''} onClick={()=>setFocus(LIKES)}>Likes</h4>
             </div>
             <div>
-                {toots && toots
+                {focus===TOOTS && toots && toots
                     .filter((toot)=>toot.author.id===parseInt(userId))
                     .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{
                         return <Toot toot={toot} key={toot.id}/>
                     }
                 )}
+                {/* {focus===LIKES && toots && toots
+                    .filter((toot)=>toot.author.id===parseInt(userId))
+                    .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
+                    .map((toot)=>{
+                        return <Toot toot={toot} key={toot.id}/>
+                    }
+                )} */}
+                {focus===MENTIONS && toots && toots
+                    .filter((toot)=>toot.mentions.includes(user.username))
+                    .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
+                    .map((toot)=>{
+                        return <Toot toot={toot} key={toot.id}/>
+                    }
+                )}
+                {/* {focus===LIKES && toots && toots
+                    .filter((toot)=>toot.author.id===parseInt(userId))
+                    .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
+                    .map((toot)=>{
+                        return <Toot toot={toot} key={toot.id}/>
+                    }
+                )} */}
             </div>
 
         </>}
