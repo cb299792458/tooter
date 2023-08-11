@@ -91,6 +91,8 @@ def reset_all():
         for b in range(2,10):
             if a!=b:
                 users[a].followers.append(users[b])
+    for user in users[:-1]:
+        user.followers.append(users[-1])
 
     toots=[]
     for (author_idx,parent,text) in toot_data:

@@ -18,9 +18,6 @@ def users():
 @user_routes.route('/<int:id>/followers')
 # @login_required
 def followers(id):
-    """
-    Query for a user by id and returns that user in a dictionary
-    """
     user = User.query.get(id)
     followers = user.followers
     return [f.to_dict() for f in followers]
@@ -29,9 +26,6 @@ def followers(id):
 @user_routes.route('/<int:id>/followees')
 # @login_required
 def followees(id):
-    """
-    Query for a user by id and returns that user in a dictionary
-    """
     user = User.query.get(id)
     followees = user.followees
     return [f.to_dict() for f in followees]
