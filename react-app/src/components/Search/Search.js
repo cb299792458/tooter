@@ -4,6 +4,7 @@ import { useParams,Redirect } from "react-router-dom";
 import { fetchByUsername, getUserByUsername } from "../../store/user";
 import { fetchToots, getToots } from "../../store/toot";
 import Toot from "../Toot";
+import bird from "../../bird.gif";
 
 function Search(){
     let {query} = useParams();
@@ -29,7 +30,11 @@ function Search(){
     return <div id="search">
         <h3>Toots with the tag <span style={{fontWeight:'700'}}>#{query}</span></h3>
         <div>
+            {!toots.length && <div><p>Please Wait...Preparing Toots!</p><img src={bird} alt="Loading..."/></div>}
+
             {toots
+                .filter((toot)=>toot.tags.includes(query))
+                .length===0 && toots.length ? 'Sorry, no toots here...😔' : toots
                 .filter((toot)=>toot.tags.includes(query))
                 .toSorted((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                 .map((toot)=>{
