@@ -27,7 +27,7 @@ function TootModal(){
         }
     }
 
-    return <div id="reply_form">
+    return <div id="toot_form">
         <img src={sessionUser.picture} id="small_picture" alt='your profile pic'/>
         <form onSubmit={handleSubmit}>
             <input type="text" value={text} placeholder="Toot something!"

@@ -46,7 +46,8 @@ function Home(){
     function filterToots(toot){
         if(!onlyFollows) return toot.parent_id===null;
         if(toot.author_id===sessionUser.id) return true;
-        return toot.parent_id===null && sessionUser.followees.includes(toot.id)
+
+        return toot.parent_id===null && sessionUser.followees.includes(toot.author_id)
     }
 
     return(

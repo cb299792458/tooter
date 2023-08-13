@@ -15,13 +15,15 @@ class Toot(db.Model):
     author = db.relationship('User', backref='toots')
 
     parent_id = db.Column(db.Integer, db.ForeignKey(id))
-    children = db.relationship('Toot', backref=db.backref('parent', remote_side=[id]))
+    children = db.relationship('Toot', backref=db.backref('parent', remote_side=[id]), foreign_keys='Toot.parent_id')
 
     text = db.Column(db.String(280), nullable=False)
     time = db.Column(TIMESTAMP,default=datetime.datetime.utcnow)
     views = db.Column(db.Integer, default=0)
-    # likes = db.Column(db.Integer, default=0)
 
+    original_id = db.Column(db.Integer, db.ForeignKey(id))
+    # original = db.relationship('Toot', backref=db.backref('retoots', remote_side=[id]))
+    retoots = db.relationship('Toot', backref=db.backref('original', remote_side=[id]), foreign_keys='Toot.original_id')
 
     def to_dict(self):
         return {
@@ -38,6 +40,9 @@ class Toot(db.Model):
             'tags': self.tags(),
             'mentions': self.mentions(),
             'parent_author': self.parent_author(),
+            'original_id': self.original_id,
+            'original': self.original.to_dict() if self.original else None,
+            'retoots': self.times_retooted(),
         }
     
     def replies(self):
@@ -67,3 +72,6 @@ class Toot(db.Model):
     
     def like_list(self):
         return [like.to_dict() for like in self.likes]
+    
+    def times_retooted(self):
+        return len(self.retoots)

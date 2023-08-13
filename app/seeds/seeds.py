@@ -82,6 +82,7 @@ def reset_all():
     for (username,name,email,password,picture) in user_data:
         new_user=User(username=username,name=name,email=email,password=password,picture=picture)
         users.append(new_user)
+        db.session.add(new_user)
 
     for user in users[1:-1]:
         users[0].followers.append(user)
@@ -98,15 +99,20 @@ def reset_all():
     for (author_idx,parent,text) in toot_data:
         new_toot=Toot(author=users[author_idx],parent=toots[parent] if parent!=None else None,text=text)
         toots.append(new_toot)
+        db.session.add(new_toot)
 
     likes=[]
     for i in range(4,11):
         new_like = Like(liker_id=i,liked_toot_id=1)
         likes.append(new_like)
+        db.session.add(new_like)
 
-    
-    db.session.add_all(users)
-    db.session.add_all(toots)
-    db.session.add_all(likes)
+    retoot = Toot(author=users[3],parent_id=None,text='a',original_id=1)
+    # toots[0].retoots.append(retoot)
+    # db.session.add(retoot)
+
+    # db.session.add_all(users)
+    # db.session.add_all(toots)
+    # db.session.add_all(likes)
 
     db.session.commit()

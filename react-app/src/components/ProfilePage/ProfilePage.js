@@ -71,34 +71,38 @@ function ProfilePage(){
             </div>
             <div>
                 {!toots.length && <div><p>Please Wait...Preparing Toots!</p><img src={bird} alt="Loading..."/></div>}
-                {focus===TOOTS && toots && (toots
+                {focus===TOOTS && (toots && toots
                     .filter((toot)=>toot.author.id===parseInt(userId))
-                    .length===0 && toots.length ? 'Sorry, no toots here...😔' : toots
+                    .filter((toot)=>!toot.original)
+                    .length===0 && toots.length ? ('Sorry, no toots here...😔') : toots
+                    .filter((toot)=>!toot.original)
                     .filter((toot)=>toot.author.id===parseInt(userId))
                     .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{return <Toot toot={toot} showReplying={true} key={toot.id}/>})
                 )}
-                {/* {focus===LIKES && toots && toots
+                {focus===RETOOTS && (toots && toots
+                    .filter((toot)=>toot.author.id===parseInt(userId))
+                    .filter((toot)=>toot.original)
+                    .length===0 && toots.length ? ('Sorry, no toots here...😔') : toots
+                    .filter((toot)=>toot.original)
                     .filter((toot)=>toot.author.id===parseInt(userId))
                     .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
-                    .map((toot)=>{
-                        return <Toot toot={toot} key={toot.id}/>
-                    }
-                )} */}
-                {focus===MENTIONS && toots && (toots
+                    .map((toot)=>{return <Toot toot={toot} showReplying={true} key={toot.id}/>})
+                )}
+                {focus===MENTIONS && (toots && toots
                     .filter((toot)=>toot.mentions.includes(user.username))
                     .length===0 && toots.length ? 'Sorry, no toots here...😔' : toots
                     .filter((toot)=>toot.mentions.includes(user.username))
                     .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{return <Toot toot={toot} showReplying={true} key={toot.id}/>})
                 )}
-                {focus===LIKES && toots && toots
+                {focus===LIKES && (toots && toots
                     .filter((toot)=>likers(toot).includes(parseInt(userId)))
                     .length===0 && toots.length ? 'Sorry, no toots here...😔' : toots
                     .filter((toot)=>likers(toot).includes(parseInt(userId)))
                     .sort((a,b)=>Date.parse(b.time)-Date.parse(a.time))
                     .map((toot)=>{return <Toot toot={toot} key={toot.id}/>}
-                )}
+                ))}
             </div>
 
         </>}

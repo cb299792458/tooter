@@ -1,7 +1,11 @@
 
-#toot, #toot > a {
+#inner {
     display: flex;
 }
+
+/* #toot {
+    display: flex;
+} */
 
 #tag {
     color: #34acf5;
@@ -18,4 +22,10 @@
 #stats {
     display: flex;
     justify-content: space-between;
+}
+
+#retoot {
+    color: gray;
+    font-weight: 700;
+    font-size: 13px;
 }
