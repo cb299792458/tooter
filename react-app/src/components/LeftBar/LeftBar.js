@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import icon from "../../icon.png";
+import OpenModalButton from "../OpenModalButton";
+import TootModal from "../TootModal";
 
 function LeftBar(){
     const sessionUser = useSelector(state=>state.session.user);
@@ -22,7 +24,10 @@ function LeftBar(){
             <a href="https://twitter.com/"><p>🤮X (fka Twitter)</p></a>
             <a href="https://github.com/cb299792458/tooter"><p>🖥️GitHub</p></a>
             <a href="https://tinyurl.com/brian-lam"><p>📁My Portfolio</p></a>
-            <div>Post</div>
+
+            {/* <div>Post</div>*/}
+            <OpenModalButton buttonText="Toot" modalComponent={<TootModal/>} />
+
             <div onClick={handleLogout}>Log Out</div>
         </div>}
     </div>

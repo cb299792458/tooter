@@ -49,7 +49,6 @@ function Home(){
         return toot.parent_id===null && sessionUser.followees.includes(toot.id)
     }
 
-    console.log(toots)
     return(
         <div id="home">
             <h4>Home</h4>
@@ -64,7 +63,7 @@ function Home(){
                 <form onSubmit={handleSubmit}>
                     <input type="text" value={text} placeholder="Write a toot..." 
                     onChange={(e)=>setText(e.target.value)} size={60}/>
-                    <button type="submit">Toot!</button>
+                    <button type="submit">Toot</button>
                 </form>
             </div>
             <div>
