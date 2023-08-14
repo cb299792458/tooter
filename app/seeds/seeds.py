@@ -107,7 +107,10 @@ def reset_all():
         likes.append(new_like)
         db.session.add(new_like)
 
-    retoot = Toot(author=users[3],parent_id=None,text='a',original_id=1)
+    db.session.commit()
+    Toot(author=users[3],parent_id=None,text='a',original_id=toots[0].id)
+    Toot(author=users[15],parent_id=None,text='a',original_id=toots[12].id)
+
     # toots[0].retoots.append(retoot)
     # db.session.add(retoot)
 

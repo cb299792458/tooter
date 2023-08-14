@@ -1,0 +1,25 @@
+#big_picture {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+}
+
+#profile_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+#edit_modal {
+    display: flex;
+}
+
+#profile_form input {
+    margin: 5px;
+    width: 97%;
+}
+
+#profile_form label {
+    width: 100%;
+}

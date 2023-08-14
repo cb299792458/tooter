@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import User, db, Toot, Like
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -69,6 +69,17 @@ def sign_up():
             name=form.data['name'],
         )
         db.session.add(user)
+
+        brian = User.query.filter_by(username='brian').one_or_none()
+        if brian:
+            user.followers.append(brian)
+            new_toot = Toot(author=brian,parent=None,text=f'Welcome to Tootr @{user.username}')
+            db.session.add(new_toot)
+            db.session.commit()
+            db.session.add(Like(liker_id=user.id,liked_toot_id=new_toot.id))
+            retoot = Toot(author=user,text='a',original_id=new_toot.id,parent_id=None)
+            db.session.add(retoot)
+
         db.session.commit()
         login_user(user)
         return user.to_dict()

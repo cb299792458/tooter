@@ -5,6 +5,8 @@ import { fetchUser, getUser } from "../../store/user";
 import { fetchToots, getToots } from "../../store/toot";
 import Toot from "../Toot";
 import bird from "../../bird.gif";
+import OpenModalButton from "../OpenModalButton";
+import EditProfileModal from "../EditProfileModal";
 
 function ProfilePage(){
     const dispatch = useDispatch();
@@ -47,7 +49,7 @@ function ProfilePage(){
             <div id="banner">
                 <div style={{height:200, maxWidth:600, backgroundColor: 'lightgray'}} />
                 <img src={user.picture} alt='' id="picture"/>
-                <div id="profile_options">{user.id===sessionUser.id ? <div>Edit Profile</div> :
+                <div id="profile_options">{user.id===sessionUser.id ? <OpenModalButton buttonText={'<div>Edit Profile</div>'} modalComponent={<EditProfileModal />}/> :
                     <div id="profile_options">
                         <div>Message</div>
                         <div>

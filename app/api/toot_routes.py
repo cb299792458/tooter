@@ -18,8 +18,8 @@ def create_toot():
     data=request.json
 
     toot = Toot(text=data['text'],author_id=data['author_id'],
-                parent_id=data['parent_id'] or None,
-                original_id=data['original_id'] or None)
+                parent_id=data['parent_id'] if 'parent_id' in data else None,
+                original_id=data['original_id'] if 'original_id' in data else None)
     db.session.add(toot)
     db.session.commit()
     

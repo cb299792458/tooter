@@ -67,8 +67,9 @@ class Toot(db.Model):
     
     def parent_author(self):
         if not self.parent_id: return None
-        parent = User.query.get(self.parent_id)
-        return parent.to_dict()
+        # parent = User.query.get(self.parent_id)
+        parent = Toot.query.get(self.parent_id)
+        return parent.author.to_dict() if parent else {}
     
     def like_list(self):
         return [like.to_dict() for like in self.likes]

@@ -1,12 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { useHistory } from "react-router-dom";
 
 function RetootModal({original}){
     const sessionUser = useSelector(state=>state.session.user);
     const {closeModal} = useModal();
-    const history = useHistory();
     const handleSubmit = async function(e){
         e.preventDefault();
 
@@ -20,7 +18,7 @@ function RetootModal({original}){
         
         if(res.ok){
             closeModal();
-            history.push(`/user/${sessionUser.id}`);
+            window.location.reload();
         }
 
     }

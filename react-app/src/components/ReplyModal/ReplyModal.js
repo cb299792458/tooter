@@ -14,7 +14,7 @@ function ReplyModal({parent,setReplies}){
                 headers: {
                   'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({text: text, author_id: sessionUser.id, parent_id:parent.id})
+                body: JSON.stringify({text: text, author_id: sessionUser.id, parent_id: parent.id})
             });
             
             if(res.ok){

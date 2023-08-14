@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db, Like, User, Toot
+from app.models import db, Like
 
 like_routes = Blueprint('likes', __name__)
 
@@ -14,7 +14,7 @@ def like(id):
     like = Like.query.get(id)
     return like.to_dict()
 
-@like_routes.route('toggle', methods=['POST'])
+@like_routes.route('/toggle', methods=['POST'])
 def toggle():
     data = request.json
     # user = User.query.get(data['liker_id'])
