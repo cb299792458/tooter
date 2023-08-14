@@ -51,7 +51,8 @@ function EditProfileModal(){
             </label>
             <p>Tootr recommends using a square picture centered on your face.</p>
             <p>To change email or password, please contact the Administrator.</p>
-            <button type="submit">Edit Profile</button>
+
+            <button type="submit" id="small-blue-button">Edit Profile</button>
         </form>
     </div>
 

@@ -66,10 +66,10 @@ function TootPage(){
                 <a href={`/user/${sessionUser.id}`}>
                     <img src={sessionUser.picture} id="small_picture" alt='your profile pic'/>
                 </a>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} id="toot-bar">
                     <input type="text" value={text} placeholder="Post your reply!"
                     onChange={(e)=>setText(e.target.value)} size={60}/>
-                    <button type="submit">Reply</button>
+                    <button type="submit" id="small-blue-button">Reply</button>
                 </form>
             </div>
             {replies && replies

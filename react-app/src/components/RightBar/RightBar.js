@@ -24,7 +24,7 @@ function RightBar() {
             <div id='verified'>
                 <h5>Get Verified</h5>
                 <h6>Get a blue checkmark for $8.</h6>
-                <div id="blue-button" onClick={()=>alert('Tootr is 100% free. Tootr is not responsible for nor entitled to any part of funds exchanged between users. If you would like to waste $8 per month in order to show off your own stupidity, then you\'re not the right kind of person to use Tootr.')}><h5>Get Verified</h5></div>
+                <div id="blue-button" onClick={()=>alert('Tootr is 100% free. Tootr is not responsible for nor entitled to any part of funds exchanged between users. If you would like to waste $8 per month in order to show off your own stupidity, then you might not be the right kind of person to use Tootr.')}><h5>Get Verified</h5></div>
             </div>
             <div id="happening">
                 <h5>What's Happening</h5>
@@ -64,7 +64,7 @@ function RightBar() {
                     <div id="article">
                         <h6>Celebrities · Trending</h6>
                         <h5>Elon Generally Horrible, also bald (not projecting)</h5>
-                        <h6>745k posts</h6>
+                        <h6>999k posts</h6>
                     </div>
                     <img src={elon} alt='' />
                 </a>

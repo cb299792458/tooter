@@ -1,7 +1,8 @@
 #big_picture {
     height: 200px;
     width: 200px;
-    border-radius: 100px;
+    border-radius: 120px;
+    padding: 20px;
 }
 
 #profile_form {
@@ -16,7 +17,7 @@
 }
 
 #profile_form input {
-    margin: 5px;
+    margin: 10px;
     width: 97%;
 }
 

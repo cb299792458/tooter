@@ -29,10 +29,10 @@ function TootModal(){
 
     return <div id="toot_form">
         <img src={sessionUser.picture} id="small_picture" alt='your profile pic'/>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} id="toot-bar">
             <input type="text" value={text} placeholder="Toot something!"
             onChange={(e)=>setText(e.target.value)} size={60}/>
-            <button type="submit">Toot</button>
+            <button type="submit" id="small-blue-button"><p>Toot</p></button>
         </form>
     </div>
 }
