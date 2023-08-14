@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import './SignupForm.css';
+import splash from "../SplashPage/splash.png"
+import blueicon from "../SplashPage/blueicon.png"
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -27,63 +29,68 @@ function SignupFormPage() {
         setErrors(['Confirm Password field must be the same as the Password field']);
     }
   };
-
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Username
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Name
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Confirm Password
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
-    </>
+    <div id="splash">
+        <img src={splash} alt="splash"/>
+        <div>
+            <img src={blueicon} alt="blueicon" height="200px" width="200px"/>
+            <h1>Tutoring now</h1>
+            <h3>Sign Up</h3>
+            <form onSubmit={handleSubmit} id="auth-form">
+                <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>
+                <label>
+                Email
+                <input
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                </label>
+                <label>
+                Username
+                <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                />
+                </label>
+                <label>
+                Display Name
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+                </label>
+                <label>
+                Password
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                </label>
+                <label>
+                Confirm Password
+                <input
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                />
+                </label>
+                <button type="submit" id="blue-button">Sign Up</button>
+            </form>
+        </div>
+    </div>
   );
 }
+
 
 export default SignupFormPage;

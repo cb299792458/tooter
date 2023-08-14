@@ -52,23 +52,28 @@ function Home(){
 
     return(
         <div id="home">
-            <h4>Home</h4>
+            <h5>Home</h5>
             <div id="follow_bar">
-                <span onClick={()=>setOnlyFollows(false)} style={onlyFollows ? {} : {fontWeight: "bold"}} >All Toots</span>
-                <span onClick={()=>setOnlyFollows(true)} style={onlyFollows ? {fontWeight: "bold"} : {}} >Following</span>
+                <div id="half" onClick={()=>setOnlyFollows(false)}>
+                    <span style={onlyFollows ? {} : {fontWeight: "bold"}} >All Toots</span>
+                </div>
+                
+                <div id="half" onClick={()=>setOnlyFollows(true)}>
+                    <span style={onlyFollows ? {fontWeight: "bold"} : {}} >Following</span>
+                </div>
             </div>
             <div id="toot_form">
-            <a href={`/user/${sessionUser.id}`}>
-                <img src={sessionUser.picture} id="small_picture" alt='your profile pic'/>
-            </a>
-                <form onSubmit={handleSubmit}>
+                <a href={`/user/${sessionUser.id}`}>
+                    <img src={sessionUser.picture} id="small_picture" alt='your profile pic'/>
+                </a>
+                <form onSubmit={handleSubmit} id="toot-bar">
                     <input type="text" value={text} placeholder="Write a toot..." 
-                    onChange={(e)=>setText(e.target.value)} size={60}/>
-                    <button type="submit">Toot</button>
+                    onChange={(e)=>setText(e.target.value)}/>
+                    <button type="submit" id="small-blue-button"><p>Toot</p></button>
                 </form>
             </div>
             <div>
-                {!toots.length && <div><p>Please Wait...Preparing Toots!</p><img src={bird} alt="Loading..."/></div>}
+                {!toots.length && <div id="loading"><h4>Please Wait...Preparing Toots!</h4><img src={bird} alt="Loading..."/></div>}
                 {toots
                     .filter(filterToots)
                     .toSorted((a,b)=>Date.parse(b.time)-Date.parse(a.time))

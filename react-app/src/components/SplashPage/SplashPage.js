@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
 import splash from "./splash.png"
+import blueicon from "./blueicon.png"
 
 function SplashPage(){
     const sessionUser = useSelector((state) => state.session.user);
@@ -17,11 +18,14 @@ function SplashPage(){
     return <div id="splash">
         <img src={splash} alt="splash"/>
         <div>
-            <h1>Happening now</h1>
+            <img src={blueicon} alt="blueicon" height="200px" width="200px"/>
+            <h1>Tutoring now</h1>
             <h3>Join Tootr today.</h3>
-            <a href="/login">Log In</a>
-            <a href="/signup">Sign Up</a>
-            <a href="/" onClick={demoLogin}>Demo User</a>
+            <div id="links">
+                <a href="/" onClick={demoLogin} id="white-button">Demo User</a>
+                <a href="/signup" id="blue-button">Sign Up</a>
+                <a href="/login" id="white-button">Log In</a>
+            </div>
         </div>
     </div>
 }

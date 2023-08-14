@@ -1,6 +1,16 @@
 
 #inner {
     display: flex;
+    /* margin: 10px; */
+}
+
+#inner #left {
+    padding: 10px;
+}
+
+#inner #right {
+    flex-grow: 1;
+    padding: 10px;
 }
 
 /* #toot {
@@ -9,6 +19,15 @@
 
 #tag {
     color: #34acf5;
+}
+
+#author {
+    color: gray;
+}
+
+#username_link {
+    font-weight: 700;
+    color: black
 }
 
 #username_link:hover {
@@ -28,4 +47,17 @@
     color: gray;
     font-weight: 700;
     font-size: 13px;
+    margin-left: 67px;
+}
+
+#toot {
+    /* padding: 10px; */
+    outline: 1px solid #f8f4f4;
+}
+
+#toot #toot {
+    padding: none;
+    outline: none;
+    /* margin: none; */
+    margin-left: none;
 }

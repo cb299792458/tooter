@@ -2,6 +2,8 @@
     width: 600px;
 }
 
+
+
 #toot_tabs {
     display: flex;
     justify-content: space-around;
@@ -10,13 +12,73 @@
 #profile_options{
     display: flex;
     justify-content: flex-end;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    /* padding-right: 30px; */
+}
+
+#message-follow {
+    display: flex;
+}
+
+#message-follow div {
+    margin-left: 10px;
+}
+
+#message-follow div span{
+    margin: 10px;
+}
+
+#profile_options #white-button {
+    width: 40%
 }
 
 #picture {
     position: absolute;
-    top: 200px;
+    top: 135px;
     margin-left: 20px;
+    border: 5px solid white;
 }
+
+#description {
+    margin-bottom: 30px;
+}
+
+#description h5, #description > span, #description div {
+    margin: 5px;
+}
+
+#description span {
+    color: gray;
+    font-weight: 400;
+}
+
+#follows p {
+    font-weight: 600;
+    text-emphasis: bold;
+}
+
+#toot_tabs div{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#tab {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#tab:hover {
+    background-color: #f8f4f4;
+    cursor: pointer;
+}
+
+
 
 #focus {
     font-weight: 700;

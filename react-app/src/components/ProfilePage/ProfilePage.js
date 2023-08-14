@@ -49,13 +49,14 @@ function ProfilePage(){
             <div id="banner">
                 <div style={{height:200, maxWidth:600, backgroundColor: 'lightgray'}} />
                 <img src={user.picture} alt='' id="picture"/>
-                <div id="profile_options">{user.id===sessionUser.id ? <OpenModalButton buttonText={'<div>Edit Profile</div>'} modalComponent={<EditProfileModal />}/> :
-                    <div id="profile_options">
-                        <div>Message</div>
-                        <div>
-                            <span onClick={toggleFollow}>{user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'}</span>
+                <div id="profile_options">{user.id===sessionUser.id ? <OpenModalButton id="white-button" buttonText={'<div>Edit Profile</div>'} modalComponent={<EditProfileModal />}/> :
+                    <div id="message-follow">
+                        <div id="blue-button" onClick={()=>alert('Coming soon!')}><span>Message</span></div>
+                        <div onClick={toggleFollow} id="blue-button">
+                            <span>{user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'}</span>
                         </div>
-                    </div>}
+                    </div>
+                    }
                 </div>
             </div>
             <div id="description">
@@ -66,13 +67,14 @@ function ProfilePage(){
                 </div>
             </div>
             <div id="toot_tabs">
-                <h4 id={focus===TOOTS ? 'focus' : ''} onClick={()=>setFocus(TOOTS)}>Toots</h4>
-                <h4 id={focus===RETOOTS ? 'focus' : ''} onClick={()=>setFocus(RETOOTS)}>Retoots</h4>
-                <h4 id={focus===MENTIONS ? 'focus' : ''} onClick={()=>setFocus(MENTIONS)}>Mentions</h4>
-                <h4 id={focus===LIKES ? 'focus' : ''} onClick={()=>setFocus(LIKES)}>Likes</h4>
+                
+                <div id="tab" onClick={()=>setFocus(TOOTS)}><h4 id={focus===TOOTS ? 'focus' : ''}>Toots</h4></div>
+                <div id="tab" onClick={()=>setFocus(RETOOTS)}><h4 id={focus===RETOOTS ? 'focus' : ''}>Retoots</h4></div>
+                <div id="tab" onClick={()=>setFocus(MENTIONS)}><h4 id={focus===MENTIONS ? 'focus' : ''}>Mentions</h4></div>
+                <div id="tab" onClick={()=>setFocus(LIKES)}><h4 id={focus===LIKES ? 'focus' : ''}>Likes</h4></div>
             </div>
             <div>
-                {!toots.length && <div><p>Please Wait...Preparing Toots!</p><img src={bird} alt="Loading..."/></div>}
+                {!toots.length && <div id="loading"><h4>Please Wait...Preparing Toots!</h4><img src={bird} alt="Loading..."/></div>}
                 {focus===TOOTS && (toots && toots
                     .filter((toot)=>toot.author.id===parseInt(userId))
                     .filter((toot)=>!toot.original)

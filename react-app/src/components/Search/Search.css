@@ -1,3 +1,9 @@
 #search {
     width: 600px;
 }
+
+#nav {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}

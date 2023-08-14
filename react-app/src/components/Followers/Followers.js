@@ -36,34 +36,37 @@ function Followers(){
     return <div id="followers">
         {user && <div id="user_bar">
             <div id="back_button">
-                <a href={`/user/${userId}`}>
-                    <svg viewBox="0 0 24 24"><g>
-                        <path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z">
-                    </path></g></svg>
-                </a>
+                <a href={`/user/${userId}`}><h2>⬅️</h2></a>
             </div>
             <div id="user_info">
-                <h4>{user.name}</h4>
-                <h6>@{user.username}</h6>
+                <h5>{user.name}</h5>
+                <p id="username">@{user.username}</p>
             </div>
         </div>}
-        <div>
-            <span style={{fontWeight: "bold"}}>Followers</span>
-            <span><a href={`/user/${userId}/following`}>Following</a></span>
+        <div id="follow-type">
+            <div id="half">
+                <span style={{fontWeight: "bold"}}>Followers</span>
+            </div>
+            <div id="half">
+                <span><a href={`/user/${userId}/following`}>Following</a></span>
+            </div>
         </div>
         <div id="follower_list">
             {followers && followers.map((user) => {
                 return <div id="follow_banner" key={user.id}>
                     <a href={`/user/${user.id}`}>
-                        <img src={user.picture} alt='' id="small_picture"/>
-                        <div id="description">
-                            <h6>{user.name}</h6>
-                            <span>@{user.username}</span>
+                        <div id="follow-badge">
+                            <img src={user.picture} alt='' id="small_picture"/>
+                            <div id="user_info">
+                                <h6>{user.name}</h6>
+                                <p id="username">@{user.username}</p>
+                            </div>
+
                         </div>
                     </a>
                     <div>
-                        {sessionUser && sessionUser.id!==user.id && <span onClick={toggleFollowUser(user.id)}>
-                            {user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'}
+                        {sessionUser && sessionUser.id!==user.id && <span id="small-blue-button" onClick={toggleFollowUser(user.id)}>
+                            {user.followers.includes(sessionUser.id) ? <p>Following</p> : <p>Follow</p>}
                         </span>}
                     </div>
                 </div>

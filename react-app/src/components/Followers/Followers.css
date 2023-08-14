@@ -4,8 +4,35 @@
 
 #follow_banner {
     display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    align-items: center;
+}
+
+#follow-badge {
+    display: flex;
+    align-items: center;
 }
 
 #followers{
     width: 600px;
+}
+
+#user_info > h6 {
+    font-weight: 700;
+}
+
+#username{
+    color: gray;
+}
+
+#follow-type {
+    display: flex;
+    height: 50px;
+    margin: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+ #follow-badge #user_info {
+    margin: 10px;
 }

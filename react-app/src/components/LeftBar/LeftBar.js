@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
-import icon from "../../icon.png";
+import icon from "../../blueicon.png";
 import OpenModalButton from "../OpenModalButton";
 import TootModal from "../TootModal";
 
@@ -18,20 +18,21 @@ function LeftBar(){
 
     return <div id="left-holder">
         {sessionUser && <div id="left-bar">
-            <a href="/"><img src={icon} alt="icon" height={50} width={50}/></a>
-            <a href="/"><p>🏠Home</p></a>
-            <a href="/search/t=tooter"><p>👩‍🏫Find Tutors</p></a>
-            <a href="/search/t=tootee"><p>🧑‍🎓Find Students</p></a>
-            <p onClick={()=>alert('Coming soon!')}>✉️Messages</p>
-            <a href={`/user/${sessionUser.id}`}><p>👤Profile</p></a>
-            <a href="https://twitter.com/"><p>🤮X (fka Twitter)</p></a>
-            <a href="https://github.com/cb299792458/tooter"><p>🖥️GitHub</p></a>
-            <a href="https://tinyurl.com/brian-lam"><p>📁My Portfolio</p></a>
+            <a href="/"><img src={icon} alt="icon" height={50} width={50} id="icon"/></a>
+            <a href="/"><h4> &nbsp; 🏠 Home</h4></a>
+            <a href="/search/t=tooter"><h4> &nbsp; 👩‍🏫 Find Tutors</h4></a>
+            <a href="/search/t=tootee"><h4> &nbsp; 🧑‍🎓 Find Students</h4></a>
+            <h4 onClick={()=>alert('Coming soon!')}> &nbsp; ✉️ Messages</h4>
+            <a href={`/user/${sessionUser.id}`}><h4> &nbsp; 👤 Profile</h4></a>
+            <a href="https://twitter.com/"><h4> &nbsp; 🤮 X (fka Twitter)</h4></a>
+            <a href="https://github.com/cb299792458/tooter"><h4> &nbsp; 🖥️ GitHub</h4></a>
+            <a href="https://tinyurl.com/brian-lam"><h4> &nbsp; 📁 My Portfolio</h4></a>
 
             {/* <div>Post</div>*/}
-            <OpenModalButton buttonText="Toot" modalComponent={<TootModal/>} />
+            <br></br>
+            <OpenModalButton buttonText="Toot" id="blue-button" modalComponent={<TootModal/>}/>
 
-            <div onClick={handleLogout}>Log Out</div>
+            <div onClick={handleLogout} style={{marginTop:"20px"}}id="white-button">Log Out</div>
         </div>}
     </div>
     

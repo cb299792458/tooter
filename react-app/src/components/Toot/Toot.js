@@ -79,7 +79,7 @@ const Toot = React.forwardRef(({toot,showReplying},ref) => {
         </a>`}}/>
         <div id="right">
             <span id="author" dangerouslySetInnerHTML={
-                {__html: `<a href='/user/${toot.author.id}'><span id="username_link">${toot.author.name}</span> @${toot.author.username}</a> ${format(toot.time)}` }
+                {__html: `<a href='/user/${toot.author.id}'><span id="username_link">${toot.author.name}</span> @${toot.author.username}</a> · ${format(toot.time)}` }
             }/>
             <br></br>
             {showReplying && toot.parent_author && <p dangerouslySetInnerHTML={{__html: `Replying to <a id="tag" href="/user/${toot.parent_author.id}">@${toot.parent_author.username}</a>`}}/>}
@@ -89,22 +89,21 @@ const Toot = React.forwardRef(({toot,showReplying},ref) => {
             <br></br>
             <span id="stats">
                 <OpenModalButton
-                    buttonText={`<span>💬${replies || ''}</span>`}
+                    buttonText={`<span>💬${replies || '\u00A0'}</span>`}
                     modalComponent={<ReplyModal parent={toot} setReplies={setReplies}/>}
                 />
 
-                {/* <div>🔄</div> */}
                 <OpenModalButton
-                    buttonText={`<span>🔄${toot.retoots || ''}</span>`}
+                    buttonText={`<span>🔄${toot.retoots || '\u00A0'}</span>`}
                     modalComponent={<RetootModal original={toot}/>}
                 />
 
                 <div onClick={toggleLike}>
                     <span>{liked ? '❤️' : '🤍'}</span>
-                    <span>{likes || ''}</span>
+                    <span>{likes || '\u00A0'}</span>
                 </div>
                 
-                <div onClick={viewsAlert}>📈{toot.views || ''}</div>
+                <div onClick={viewsAlert}>📈{toot.views || '\u00A0'}</div>
 
                 <div onClick={copyURL}>{copied ? '✅' : '📤'}</div>
             </span>
@@ -114,10 +113,11 @@ const Toot = React.forwardRef(({toot,showReplying},ref) => {
 
     
     if(toot.original_id){
-        return <>
+        return <div id="toot">
+            <br></br>
             <a href={`/user/${toot.author.id}`}><span id="retoot">🔄 {toot.author.name} Retooted</span></a>
             <Toot toot={toot.original}/>
-        </>
+        </div>
     } else {
         return(
             <div id="toot" ref={ref}>
