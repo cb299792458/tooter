@@ -23,9 +23,9 @@ function RetootModal({original}){
 
     }
 
-    return <div id="retoot_form" onClick={handleSubmit}>
-        <p>🔄Retoot this toot?</p>
-        <button type="submit">Retoot</button>
+    return <div id="toot-bar" onClick={handleSubmit}>
+        <h3>🔄Retoot this toot? &nbsp;</h3>
+        <button type="submit" id="small-blue-button">Retoot</button>
     </div>
 }
 
