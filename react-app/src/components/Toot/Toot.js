@@ -5,6 +5,7 @@ import ReplyModal from "../ReplyModal";
 import OpenModalButton from "../OpenModalButton";
 import { useSelector } from "react-redux";
 import RetootModal from "../RetootModal";
+import DeleteModal from "../DeleteModal";
 
 // function Toot({toot}){
 const Toot = React.forwardRef(({toot,showReplying},ref) => {
@@ -78,12 +79,17 @@ const Toot = React.forwardRef(({toot,showReplying},ref) => {
             </img>
         </a>`}}/>
         <div id="right">
-            <span id="author" dangerouslySetInnerHTML={
-                {__html: `<a href='/user/${toot.author.id}'><span id="username_link">${toot.author.name}</span> @${toot.author.username}</a> · ${format(toot.time)}` }
-            }/>
+            <div id="title">
+                <span id="author" dangerouslySetInnerHTML={
+                    {__html: `<a href='/user/${toot.author.id}'><span id="username_link">${toot.author.name}</span> @${toot.author.username}</a> · ${format(toot.time)}` }
+                }/>
+                {sessionUser.id === toot.author.id ? <OpenModalButton 
+                    buttonText={'🗑️'}
+                    modalComponent={<DeleteModal toot={toot}/>}
+                /> : ''}
+            </div>
             <br></br>
             {showReplying && toot.parent_author && <p dangerouslySetInnerHTML={{__html: `Replying to <a id="tag" href="/user/${toot.parent_author.id}">@${toot.parent_author.username}</a>`}}/>}
-            <br></br>
             {formatText(toot.text)}
             <br></br>
             <br></br>

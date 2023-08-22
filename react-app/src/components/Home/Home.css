@@ -14,6 +14,7 @@
 }
 
 #toot-bar {
+    margin: 20px;
     display: flex;
     flex-grow: 1;
 }
