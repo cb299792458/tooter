@@ -22,7 +22,7 @@ function LeftBar(){
             <a href="/"><h4> &nbsp; 🏠 Home</h4></a>
             <a href="/search/t=tooter"><h4> &nbsp; 👩‍🏫 Find Tutors</h4></a>
             <a href="/search/t=tootee"><h4> &nbsp; 🧑‍🎓 Find Students</h4></a>
-            <h4 onClick={()=>alert('Coming soon!')}> &nbsp; ✉️ Messages</h4>
+            <a href="/messages"><h4> &nbsp; ✉️ Messages</h4></a>
             <a href={`/user/${sessionUser.id}`}><h4> &nbsp; 👤 Profile</h4></a>
             <a href="https://twitter.com/"><h4> &nbsp; 🤮 X (fka Twitter)</h4></a>
             <a href="https://github.com/cb299792458/tooter"><h4> &nbsp; 🖥️ GitHub</h4></a>

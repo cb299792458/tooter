@@ -1,0 +1,12 @@
+#message-top img {
+    margin: 10px;
+}
+#message-top h3 {
+    padding-left: 60px;
+}
+
+#message-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

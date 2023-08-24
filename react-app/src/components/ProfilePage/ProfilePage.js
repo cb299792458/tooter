@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams } from "react-router-dom";
 import { fetchUser, getUser } from "../../store/user";
 import { fetchToots, getToots } from "../../store/toot";
 import Toot from "../Toot";
 import bird from "../../bird.gif";
 import OpenModalButton from "../OpenModalButton";
 import EditProfileModal from "../EditProfileModal";
+import MessageModal from "../MessageModal";
 
 function ProfilePage(){
     const dispatch = useDispatch();
@@ -51,7 +52,9 @@ function ProfilePage(){
                 <img src={user.picture} alt='' id="picture"/>
                 <div id="profile_options">{user.id===sessionUser.id ? <OpenModalButton id="white-button" buttonText={'<div>Edit Profile</div>'} modalComponent={<EditProfileModal />}/> :
                     <div id="message-follow">
-                        <div id="blue-button" onClick={()=>alert('Coming soon!')}><span>Message</span></div>
+                        <OpenModalButton id="blue-button" buttonText={'<span>Message</span>'} modalComponent={<MessageModal user={user}/>} />
+
+                        {/* <div id="blue-button" onClick={()=>alert('Coming soon!')}><span>Message</span></div> */}
                         <div onClick={toggleFollow} id="blue-button">
                             <span>{user.followers.includes(sessionUser.id) ? 'Following' : 'Follow'}</span>
                         </div>

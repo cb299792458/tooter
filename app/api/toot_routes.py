@@ -10,7 +10,7 @@ def toots():
 
     return [toot.to_dict() for toot in toots]
 
-@toot_routes.route('/new',methods=['POST'])
+@toot_routes.route('/new', methods=['POST'])
 def create_toot():
     data=request.json
 

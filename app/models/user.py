@@ -26,6 +26,9 @@ class User(db.Model, UserMixin):
                                secondaryjoin=(id == db.Table('follows').c.followee_id),
                                backref=db.backref('followees',lazy='dynamic'))
 
+    sent_messages = db.relationship('Message', backref='sender', foreign_keys='Message.sender_id')
+    received_messages = db.relationship('Message', backref='receiver', foreign_keys='Message.receiver_id')
+
 
     @property
     def password(self):
@@ -47,5 +50,8 @@ class User(db.Model, UserMixin):
             'picture': self.picture,
             'followees': [f.id for f in self.followees],
             'followers': [f.id for f in self.followers],
+            'sent_messages': [m.id for m in self.sent_messages],
+            'received_messages': [m.id for m in self.received_messages],
         }
+
 

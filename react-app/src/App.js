@@ -14,6 +14,7 @@ import Home from "./components/Home";
 import ProfilePage from "./components/ProfilePage";
 import Followers from "./components/Followers";
 import Following from "./components/Following";
+import Messages from "./components/Messages";
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,9 @@ function App() {
                 </Route>
                 <Route path="/search/:query">
                     <Search />
+                </Route>
+                <Route path="/messages">
+                    <Messages />
                 </Route>
                 <Route path="/splashpage">
                     <SplashPage />

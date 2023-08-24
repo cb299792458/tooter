@@ -1,4 +1,4 @@
-from app.models import db, User, environment, SCHEMA, Toot, Like
+from app.models import db, User, environment, SCHEMA, Toot, Like, Message
 from sqlalchemy.sql import text
 
 
@@ -111,11 +111,8 @@ def reset_all():
     Toot(author=users[3],parent_id=None,text='a',original_id=toots[0].id)
     Toot(author=users[15],parent_id=None,text='a',original_id=toots[12].id)
 
-    # toots[0].retoots.append(retoot)
-    # db.session.add(retoot)
+    msg=Message(sender=users[0],receiver=users[1],text='To the bus!')
+    db.session.add(msg)
 
-    # db.session.add_all(users)
-    # db.session.add_all(toots)
-    # db.session.add_all(likes)
 
     db.session.commit()

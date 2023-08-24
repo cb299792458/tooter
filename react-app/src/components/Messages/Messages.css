@@ -1,0 +1,18 @@
+#messages {
+    width: 600px;
+}
+
+#messages h3 {
+    margin: 10px;
+}
+
+#messages #blue-button {
+    width: fit-content;
+    padding: 6px;
+    border-radius: 26px;
+}
+
+#messages #inner {
+    display: flex;
+    align-items: center;
+}
