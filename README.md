@@ -9,6 +9,7 @@ Inspired by ride sharing and food delivery apps, Tootr aims to quickly and easil
 Tootr is structurally and aesthetically modeled after the app formerly known as Twitter, after its prior branding was abandoned due to the incompetence of its CEO.
 
 ## Link
-Tootr is currently a work in progress. Everything is subject to change.
+Tootr has reached a minimum viable product, and I'm feeling comfortable with Python and Flask. 
+Development is on hiatus while I work on other projects. 
 
 [Tootr](https://tootr.onrender.com)
