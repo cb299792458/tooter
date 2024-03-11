@@ -16,8 +16,10 @@ function SplashPage(){
     };
 
     return <div id="splash">
-        <img src={splash} alt="splash"/>
-        <div>
+        <div id="splash-container">
+          <img src={splash} alt="splash" id="whats-happening"/>
+        </div>
+        <div id="auth">
             <img src={blueicon} alt="blueicon" height="200px" width="200px"/>
             <h1>Tutoring now</h1>
             <h3>Join Tootr today.</h3>

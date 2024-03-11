@@ -12,6 +12,12 @@
     display: flex;
 }
 
+@media (max-width: 1000px) {
+    #right-holder {
+        display: none;
+    }
+}
+
 #search-bar {
     background-color: #f8f4f4;
     height: 50px;

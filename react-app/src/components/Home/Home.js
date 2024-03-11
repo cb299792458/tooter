@@ -17,7 +17,7 @@ function Home(){
     }, []);
 
     const [text,setText] = useState('');
-    const [onlyFollows,setOnlyFollows] = useState(true);
+    const [onlyFollows,setOnlyFollows] = useState(false);
 
     const sessionUser = useSelector((state) => state.session.user);
     if(!sessionUser) return <Redirect to="/splashpage" />
