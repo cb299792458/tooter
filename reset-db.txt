@@ -1,0 +1,6 @@
+
+# replace database url (external)
+# pipenv shell
+# flask db upgrade
+# flask seed reset
+# replace database url (internal) on render
