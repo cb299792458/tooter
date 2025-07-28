@@ -11,7 +11,6 @@ Tootr is a social media app designed to match students (tootees) with personal t
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## Story
@@ -73,7 +72,7 @@ npm start
 
 ## Usage
 
-- Visit [Tootr Live](https://tootr.onrender.com) (if deployed)
+- Visit [Tootr Live](https://tootr.onrender.com)
 - Or run locally at `http://localhost:3000` (frontend) and `http://localhost:5000` (backend)
 
 ## Contributing
@@ -86,10 +85,6 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Open a pull request
 
-## License
-
-[MIT](LICENSE) (or specify your license)
-
 ## Contact
 
-Created by [Your Name](mailto:your.email@example.com) — feel free to reach out!
+Created by [Brian Lam](mailto:brianrlam@gmail.com) — feel free to reach out!
